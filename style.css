@@ -162,9 +162,14 @@ main
     display: inline-block;
     width: 50%;
     box-shadow: 0 0px 30px rgba(0, 0, 0, 0.5);
-    border: solid 2px var(--paletteText);
+    border: solid 4px var(--paletteText);
     border-radius: 15px;
     overflow: hidden;
+}
+
+.slider-video video
+{
+    margin-bottom: -10px;
 }
 
 .slider-text
