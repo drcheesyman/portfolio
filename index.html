@@ -9,7 +9,7 @@
 
 </head>
 
-<body onload="setDiv(1)">
+<body onload="nextDiv();">
 <header>
 
     <div class="navbar">
@@ -219,19 +219,34 @@
             </div>
 
             <script>
-            var slideIndex = 1;
+            var slideIndex = 0;
+            var timer;
 
-            function setDiv(n)
+            function nextDiv()
             {
-                showDivs(slideIndex = n);
+                t = 10000;
+                clearTimeout(timer);
+                timer = setTimeout(() => nextDiv(), t);
+
+                showDivs(slideIndex + 1, t);
             }
 
-            function showDivs(n)
+            function setDiv(n, t)
             {
+                t = 20000;
+                showDivs(n, t);
+                clearTimeout(timer);
+                timer = setTimeout(() => nextDiv(), t);
+            }
+
+            function showDivs(n, t)
+            {
+                slideIndex = n;
                 var i;
 
                 var x = document.getElementsByClassName("header-slides");
                 var y = document.getElementsByClassName("minislider-icon");
+                var z = document.getElementsByClassName("timer");
 
                 if (n > x.length) {slideIndex = 1}
                 if (n < 1) {slideIndex = x.length}
@@ -251,16 +266,24 @@
                     else
                     { y[i].style.outline = "none"; }
                 }
+
+                for (i = 0; i < z.length; i++) 
+                {
+                    if(i == slideIndex - 1)
+                    { z[slideIndex - 1].style.animation = "minisliderTimerFill " + t + "ms linear"; }
+                    else
+                    { z[i].style.animation = "none"; }
+                }
             }
             </script>
 
             <div>
                 <ul id="minislider">
-                    <li class="minislider-icon" onclick="setDiv(1)"><img src="media/games/basil/basil_mini.jpg"></li>
-                    <li class="minislider-icon" onclick="setDiv(2)"><img src="media/games/spirit/spirit_mini.jpg"></li>
-                    <li class="minislider-icon" onclick="setDiv(3)"><img src="media/games/robovania/robovania_mini.jpg"></li>
-                    <li class="minislider-icon" onclick="setDiv(4)"><img src="media/games/time/time_mini.jpg"></li>
-                    <li class="minislider-icon" onclick="setDiv(5)"><img src="media/games/deep/deep_mini.jpg"></li>
+                    <li class="minislider-icon" onclick="setDiv(1)"><img src="media/games/basil/basil_mini.jpg"><div class="timer"></div></li>
+                    <li class="minislider-icon" onclick="setDiv(2)"><img src="media/games/spirit/spirit_mini.jpg"><div class="timer"></div></li>
+                    <li class="minislider-icon" onclick="setDiv(3)"><img src="media/games/robovania/robovania_mini.jpg"><div class="timer"></div></li>
+                    <li class="minislider-icon" onclick="setDiv(4)"><img src="media/games/time/time_mini.jpg"><div class="timer"></div></li>
+                    <li class="minislider-icon" onclick="setDiv(5)"><img src="media/games/deep/deep_mini.jpg"><div class="timer"></div></li>
                 </ul>
             </div>
 
