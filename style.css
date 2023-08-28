@@ -691,6 +691,148 @@ h2
     z-index: 100;
 }
 
+.multicontent
+{
+    position: relative;
+    padding: 0 120px;
+    margin: 120px 0;
+}
+
+.multicontent .leftarrow
+{
+    position: absolute;
+    left: 20px;
+    top: 60px;
+
+    width: 60px;
+    height: 120px;
+
+    background-color: var(--paletteDark);
+    border-radius: 5px;
+    border: solid 2px var(--paletteText);
+}
+
+.multicontent .rightarrow
+{
+    position: absolute;
+    right: 20px;
+    top: 60px;
+
+    width: 60px;
+    height: 120px;
+    
+    background-color: var(--paletteDark);
+    border-radius: 5px;
+    border: solid 2px var(--paletteText);
+}
+
+.multicontent .leftarrow:hover
+{
+    animation: leftArrowSlide 0.2s;
+    background-color: var(--paletteDarkHover);
+    top: 55px;
+    height: 125px;
+    width: 65px;
+    left: -10px;
+}
+
+.multicontent .rightarrow:hover{
+    animation: rightArrowSlide 0.2s;
+    background-color: var(--paletteDarkHover);
+    top: 55px;
+    height: 125px;
+    width: 65px;
+    right: -10px;
+}
+
+@keyframes leftArrowSlide
+{
+    0%
+    { 
+        background-color: var(--paletteDark);
+        left: 20px;
+    }
+    20%
+    {
+        top: 65px;
+        height: 105px;
+        width: 85px;
+    }
+    100% 
+    {
+        background-color: var(--paletteDarkHover);
+        top: 50px;
+        height: 125px;
+        width: 55px;
+        left: -10px;
+    }
+}
+
+@keyframes rightArrowSlide
+{
+    0%
+    { 
+        background-color: var(--paletteDark);
+        right: 20px;
+    }
+    20%
+    {
+        top: 65px;
+        height: 105px;
+        width: 85px;
+    }
+    100% 
+    {
+        background-color: var(--paletteDarkHover);
+        top: 50px;
+        height: 125px;
+        width: 55px;
+        right: -10px;
+    }
+}
+
+.multicontent li
+{
+    display: block;
+}
+
+.multicontent ul
+{
+    padding: 0;
+    margin: 0;
+
+    width: fit-content;
+    display: block;
+    margin: 0 auto;
+}
+
+.multicontentimages img
+{
+    display: block;
+    margin: 0 auto;
+}
+
+.multicontentdots li
+{
+    border-radius: 100%;
+    background-color: var(--paletteText);
+    display: inline-block;
+    width:  10px;
+    height: 10px;
+    border: 1px solid black;
+}
+
+.multicontentdots li.selected
+{
+    background-color: var(--paletteDark);
+    border: 1px solid black;
+}
+
+.multicontenttexts li
+{
+
+}
+
 /***********************    MOBILE    ***********************/
 
 @media screen and (max-width: 1360px) and (min-width: 1120px)
