@@ -69,6 +69,39 @@
 <main>
 
     <div id="slider-holder">
+        <!-- -------- Platforming Adventure -------- -->
+        <div class="header-slides" style="display: none;">
+            <a href="games/platform.html">
+                <div class="slider-item" style="background-color: #12142d">
+
+                    <img class="slider-background" src="media/games/platform/platform_bg.jpg">
+
+                    <div class="slider-flex">
+                        <div class="slider-text">
+                            <img src="media/games/platform/platform_logo.png">
+
+                            <h2>Designing levels for a platformer</h2>
+                            <p>Robovania is a 2D metroidvania. The player explores the ruins of a city to unlock new abilites. This was a 5 person group project, in which I worked as a level designer.</p>
+
+                            <section>
+                                <div class="button">Read More <i class="arrow right"></i></div>
+                            </section>
+                        </div>
+
+                        <div class="slider-video">
+                            <video poster="media/games/platform/platform_trailer_poster.jpg" width="100%" autoplay loop muted playsinline style="pointer-events: none;">
+                                <source src="media/games/platform/platform_trailer.mp4" type="video/mp4">
+                                <source src="media/games/platform/platform_trailer.ogg" type="video/ogg">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="mobileTimerIndicator"></div>
+        </div>
+
         <!-- -------- BASIL -------- -->
         <div class="header-slides">
             <a href="games/basil.html">
@@ -125,39 +158,6 @@
                             <video poster="media/games/spirit/spirit_trailer_poster.jpg" width="100%" autoplay loop muted playsinline style="pointer-events: none;">
                                 <source src="media/games/spirit/spirit_trailer.mp4" type="video/mp4">
                                 <source src="media/games/spirit/spirit_trailer.ogg" type="video/ogg">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <div class="mobileTimerIndicator"></div>
-        </div>
-
-        <!-- -------- Platforming Adventure -------- -->
-        <div class="header-slides" style="display: none;">
-            <a href="games/platform.html">
-                <div class="slider-item" style="background-color: #12142d">
-
-                    <img class="slider-background" src="media/games/platform/platform_bg.jpg">
-
-                    <div class="slider-flex">
-                        <div class="slider-text">
-                            <img src="media/games/platform/platform_logo.png">
-
-                            <h2>Designing levels for a platformer</h2>
-                            <p>Robovania is a 2D metroidvania. The player explores the ruins of a city to unlock new abilites. This was a 5 person group project, in which I worked as a level designer.</p>
-
-                            <section>
-                                <div class="button">Read More <i class="arrow right"></i></div>
-                            </section>
-                        </div>
-
-                        <div class="slider-video">
-                            <video poster="media/games/platform/platform_trailer_poster.jpg" width="100%" autoplay loop muted playsinline style="pointer-events: none;">
-                                <source src="media/games/platform/platform_trailer.mp4" type="video/mp4">
-                                <source src="media/games/platform/platform_trailer.ogg" type="video/ogg">
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -256,6 +256,7 @@
             showDivs(n, t);
             clearTimeout(timer);
             timer = setTimeout(() => nextDiv(), t);
+            window.scrollTo(0, 0);
         }
 
         function showDivs(n, t) {
@@ -289,16 +290,14 @@
                 if (i == slideIndex - 1) { w[slideIndex - 1].style.animation = "minisliderTimerFill " + t + "ms linear"; }
                 else { z[i].style.animation = "none"; }
             }
-
-            window.scrollTo(0, 0);
         }
     </script>
 
     <div>
         <ul id="minislider">
-            <li class="minislider-icon" onclick="setDiv(1)"><img src="media/games/basil/basil_mini.jpg"><div class="timer"></div></li>
-            <li class="minislider-icon" onclick="setDiv(2)"><img src="media/games/spirit/spirit_mini.jpg"><div class="timer"></div></li>
-            <li class="minislider-icon" onclick="setDiv(3)"><img src="media/games/robovania/robovania_mini.jpg"><div class="timer"></div></li>
+            <li class="minislider-icon" onclick="setDiv(1)"><img src="media/games/robovania/robovania_mini.jpg"><div class="timer"></div></li>
+            <li class="minislider-icon" onclick="setDiv(2)"><img src="media/games/basil/basil_mini.jpg"><div class="timer"></div></li>
+            <li class="minislider-icon" onclick="setDiv(3)"><img src="media/games/spirit/spirit_mini.jpg"><div class="timer"></div></li>
             <!--
             <li class="minislider-icon" onclick="setDiv(4)"><img src="media/games/time/time_mini.jpg"><div class="timer"></div></li>
             <li class="minislider-icon" onclick="setDiv(5)"><img src="media/games/deep/deep_mini.jpg"><div class="timer"></div></li>

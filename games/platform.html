@@ -11,259 +11,262 @@
 </head>
 
 <body onload="load();">
-<header>
+    <header>
 
-    <div class="navbar">
-        <div id="name-bar">
-            <a href="../">
-                <ul>
-                    <li id="name-tag">Luke Williamson</li>
-                    <li id="designer-tag"><i>Designer</i></li>
+        <div class="navbar">
+            <div id="name-bar">
+                <a href="../">
+                    <ul>
+                        <li id="name-tag">Luke Williamson</li>
+                        <li id="designer-tag"><i>Designer</i></li>
+                    </ul>
+                </a>
+            </div>
+
+            <nav>
+                <ul id="buttons-bar">
+                    <li id="hamburger">
+                        <img id="hamOpen" onclick="myFunction()" src="../media/generic/hamburger.png">
+                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="../media/generic/hamburgerClose.png">
+
+                        <div id="mobileNav" style="display: none;">
+                            <ul class="head-dropdown">
+                                <li><a class="head-button" href="../">Home</a></li>
+                                <li><a class="head-button" href="../levels">Levels</a></li>
+                                <li><a class="head-button" href="../ux">UX</a></li>
+                                <li><a class="head-button" href="../contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="no-mobile"><a class="head-button" href="../">Home</a></li>
+                    <li class="no-mobile">
+                        <a class="head-button" href="../levels">Levels</a>
+
+                        <ul class="head-dropdown">
+                            <li><a class="head-button" href="../games/basil.html">Basil and the Isles of Spice</a></li>
+                            <li><a class="head-button" href="../games/spirit.html">Split Spirit</a></li>
+                            <li><a class="head-button" href="../games/robovania.html">Robovania</a></li>
+                            <li><a class="head-button" href="../games/deep.html">Dangers of the Deep</a></li>
+                        </ul>
+                    </li>
+                    <li class="no-mobile">
+                        <a class="head-button" href="../ux">UX</a>
+
+                        <ul class="head-dropdown">
+                            <li><a class="head-button" href="../games/basil.html">Basil and the Isles of Spice</a></li>
+                            <li><a class="head-button" href="../games/spirit.html">Split Spirit</a></li>
+                            <li><a class="head-button" href="../games/time.html">Time Keeper</a></li>
+                        </ul>
+                    </li>
+                    <li class="no-mobile"><a class="head-button" href="../contact">Contact</a></li>
                 </ul>
-            </a>
+            </nav>
+
         </div>
 
-        <nav>
-            <ul id="buttons-bar">
-                <li><a class="head-button" href="../">Home</a></li>
-                <li>
-                    <a class="head-button" href="../levels">Levels</a>
+    </header>
 
-                    <ul class="head-dropdown">
-                        <li><a class="head-button" href="basil.html">Basil and the Isles of Spice</a></li>
-                        <li><a class="head-button" href="spirit.html">Split Spirit</a></li>
-                        <li><a class="head-button" href="robovania.html">Robovania</a></li>
-                        <li><a class="head-button" href="deep.html">Dangers of the Deep</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="head-button" href="../ux">UX</a>
+    <script>
 
-                    <ul class="head-dropdown">
-                        <li><a class="head-button" href="basil.html">Basil and the Isles of Spice</a></li>
-                        <li><a class="head-button" href="spirit.html">Split Spirit</a></li>
-                        <li><a class="head-button" href="time.html">Time Keeper</a></li>
-                    </ul>
-                </li>
-                <li><a class="head-button" href="../contact">Contact</a></li>
+        function myFunction() {
+            var x = document.getElementById("mobileNav");
+            var y = document.getElementById("hamOpen");
+            var z = document.getElementById("hamClose");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+                z.style.display = "block";
+            } else {
+                x.style.display = "none";
+                y.style.display = "block";
+                z.style.display = "none";
+            }
+        }
+
+
+        function load() {
+            nextDiv(0, 'region1');
+            nextDiv(0, 'region2');
+        }
+
+        function nextDiv(d, s) {
+            var i;
+            var dots = document.getElementById(s).getElementsByClassName("multicontentdots")[0].children;
+
+            for (i = 0; 1 < dots.length; i++) {
+                if (dots[i].className == "selected") {
+                    showDivs(i + d, s);
+                    return;
+                }
+            }
+        }
+
+        function showDivs(n, s) {
+            var i;
+
+            var region = document.getElementById(s);
+
+            var img = region.getElementsByClassName("multicontentimages")[0].children;
+            var dot = region.getElementsByClassName("multicontentdots")[0].children;
+            var txt = region.getElementsByClassName("multicontenttexts")[0].children;
+
+            if (n >= dot.length) { n = 0 }
+            if (n < 0) { n = dot.length - 1 }
+
+            for (i = 0; i < dot.length; i++) {
+                if (i == n) {
+                    img[i].style.display = "block";
+                    dot[i].className = "selected";
+                    txt[i].style.display = "block";
+                }
+                else {
+                    img[i].style.display = "none";
+                    dot[i].classList.remove("selected");
+                    txt[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+    <main>
+
+        <section class="content">
+            <div class="contentPad"></div>
+            <img class="logo" src="../media/games/platform/platform_logo.png">
+
+            <h2>Overview</h2>
+            <ul>
+                <li>Made in Unity</li>
+                <li>Solo project</li>
+                <li>14 weeks</li>
             </ul>
-        </nav>
-        
-    </div>
 
-</header>
-
-            <script>
-
-                function load()
-                {
-                    nextDiv(0, 'region1');
-                    nextDiv(0, 'region2');
-                }
-
-                function nextDiv(d, s)
-                {
-                    var i;
-                    var dots = document.getElementById(s).getElementsByClassName("multicontentdots")[0].children;
-
-                    for(i = 0; 1 < dots.length; i++)
-                    {
-                        if(dots[i].className == "selected")
-                        {
-                            showDivs(i + d, s);
-                            return;
-                        }
-                    }
-                }
-
-                function showDivs(n, s)
-                {
-                    var i;
-
-                    var region = document.getElementById(s);
-
-                    var img = region.getElementsByClassName("multicontentimages")[0].children;
-                    var dot = region.getElementsByClassName("multicontentdots")[0].children;
-                    var txt = region.getElementsByClassName("multicontenttexts")[0].children;
-
-                    if (n >= dot.length) {n = 0}
-                    if (n < 0) {n = dot.length - 1}
-
-                    for (i = 0; i < dot.length; i++) 
-                    {
-                        if(i == n)
-                        { 
-                            img[i].style.display = "block";
-                            dot[i].className = "selected";
-                            txt[i].style.display = "block";
-                        }
-                        else
-                        {
-                            img[i].style.display = "none";
-                            dot[i].classList.remove("selected");
-                            txt[i].style.display = "none";
-                        }
-                    }
-                }
-            </script>
-
-        <main>
-
-<section>
-            <h2>Split Spirit</h2>
+            <h2>Problem</h2>
             <p>
-                This page is under construction.
+                Creating moving objects in game Engines often involves adding many empty game objects to a scene. This can quickly get out of hand leaving the hierarchy a mess. My goal was to create a fully self-contained solution that is easy for other people on my team to use.
+            </p>
+            <img class="slider-background" src="../media/games/platform/MovingPlatformBeforeAndAfter.png">
+
+            <h2>Goals</h2>
+            <ul>
+                <li>Support various platform types for different circumstances</li>
+                <li>Easily draw paths without creating empty game objects for each point</li>
+                <li>Make custom editor so it is easy to use</li>
+            </ul>
+
+            <h2>Process/Overview</h2>
+            <ul>
+                <li>Create a basic moving platform script using game objects as target points.</li>
+                <li>Update the system to use serialized vectors for each position.</li>
+                <li>Create different options for the moving platform, including movement type, duration, looping, end behavior, and platform count.</li>
+                <li>Create a custom inspector to only draw certain attributes as they are applicable (i.e. Don’t include “end behavior” for platforms that loop)</li>
+                <li>Create a custom editor to freely control the points using handles instead of hardcoded numbers.</li>
+                <li>Update path system using splines instead of linear paths.</li>
+                <li>Update custom editor using buttons to select points so only one handle is visible at a time. Add multi-selecting and ctrl selection</li>
+                <li>Update points to include rotation</li>
+            </ul>
+
+            <h2>Editor Prototype</h2>
+            <p>
+                My initial goal with this tool was simply to minimize the number of empty game objects that are required to make basic point-to-point movement in Unity. I had created a moving platform script this way in the past and found it inefficient to work with. Instead, I wanted to use a list of Vectors defining each point. I used Unity’s gizmo system to draw where each point was, and even drew a series of smaller points defining the path.
+            </p>
+            <p>
+                This system made adding new points far easier, but came at the downside of making it harder to move the points. This led me to do research into custom editors to find ways to add Unity’s movement handles to the scene. I created a custom editor script that draws handles at each of the points. Now, whenever a handle is moved, the point moves with it.
             </p>
 
-            <a href="../"> 
-                <div class="button">Return to Home</div>
-            </a>
-            
-
-            <div class="multicontent" id="region1">
-
-                <div onclick="nextDiv(-1, 'region1')" class="leftarrow"></div>
-                <div onclick="nextDiv(1, 'region1')" class="rightarrow"></div>
-            
-                <!-- Images -->
-                <ul class="multicontentimages">
-                <li><img src="../media/games/basil/proto_map_01.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_02.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_03.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_04.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_05.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_06.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_07.jpg"></li>
-                </ul>
-
-                <!-- Dots -->
-                <ul class="multicontentdots">
-                <li onclick="showDivs(0, 'region1')" class="selected"></li>
-                <li onclick="showDivs(1, 'region1')"></li>
-                <li onclick="showDivs(2, 'region1')"></li>
-                <li onclick="showDivs(3, 'region1')"></li>
-                <li onclick="showDivs(4, 'region1')"></li>
-                <li onclick="showDivs(5, 'region1')"></li>
-                <li onclick="showDivs(6, 'region1')"></li>
-                </ul>
-
-                <!-- Texts -->
-                <ul class="multicontenttexts">
-                <li><p>1Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>2Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>3Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>4Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>5Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>6Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>7Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                </ul>
-
-            </div>
-
-            <div class="multicontent" id="region2">
-
-                <div onclick="nextDiv(-1, 'region2')" class="leftarrow"></div>
-                <div onclick="nextDiv(1, 'region2')" class="rightarrow"></div>
-            
-                <!-- Images -->
-                <ul class="multicontentimages">
-                <li><img src="../media/games/basil/proto_map_01.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_02.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_03.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_04.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_05.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_06.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_07.jpg"></li>
-                </ul>
-
-                <!-- Dots -->
-                <ul class="multicontentdots">
-                <li onclick="showDivs(0, 'region2')" class="selected"></li>
-                <li onclick="showDivs(1, 'region2')"></li>
-                <li onclick="showDivs(2, 'region2')"></li>
-                <li onclick="showDivs(3, 'region2')"></li>
-                <li onclick="showDivs(4, 'region2')"></li>
-                <li onclick="showDivs(5, 'region2')"></li>
-                <li onclick="showDivs(6, 'region2')"></li>
-                </ul>
-
-                <!-- Texts -->
-                <ul class="multicontenttexts">
-                <li><p>1Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>2Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>3Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>4Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>5Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>6Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>7Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                </ul>
-
-            </div>
-
-
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            
+            <h2>Inspector Script</h2>
             <p>
-                <a href="../levels">Click here to see my levels</a>
+                After I’d created the basic movement between points, I realized that there were many other features that movement platforms could have. I looked at various types of moving platforms that I would want to use in my games, as well as common types in other games, and narrowed it down to a few categories.
             </p>
-            </section>
+            <p>
+                Movement Type
+            </p>
+            <ul>
+                <li>Loop</li>
+                <li>Ping-Pong</li>
+                <li>One-Way</li>
+            </ul>
+            <p>
+                End Behavior
+            </p>
+            <ul>
+                <li>Stop</li>
+                <li>Destroy</li>
+                <li>Launch</li>
+                <li>Fall</li>
+            </ul>
+            <p>
+                Spawn Type
+            </p>
+            <ul>
+                <li>One Platform</li>
+                <li>Continuous stream</li>
+                <li>Platform Count</li>
+            </ul>
+            <p>
+                Movement Trigger
+            </p>
+            <ul>
+                <li>Play on Awake</li>
+                <li>Play on player contact</li>
+                <li>Manual trigger only</li>
+            </ul>
+            <p>
+                Other Variables
+            </p>
+            <ul>
+                <li>Speed</li>
+                <li>Pause time at points</li>
+            </ul>
+            <p>
+                Many of these categories had their own variables that didn’t apply to other. For example, if the spawn type is set to “continuous”, there is a variable to determine the time between platforms. Having all of these variables at once made the platforms difficult to set up, since you wouldn’t know which options are useful in each situation. I decided to create a custom inspector alongside the debug drawer to make this more organized. I created specific conditions that would determine if an option should be visible in the inspector. This meant almost every variable would be dynamic, and only ones that are useful for the current platform type would be visible.
+            </p>
 
-        </main>
-        
-    </body>
+            <h2>Spline Drawer</h2>
+            <p>
+                This system was first created for a smaller project in 2021, and was left untouched for a while. In 2023, I started working on Platforming Adventure and needed a moving platform script. I decided to build off of this script since it was already fairly robust, but I still really wanted to fix the custom editor handles. They made the tool very clunky and difficult to use properly.
+            </p>
+            <p>
+                I wanted to only show handles on points that are “selected” for movement. I replaced my original method with editor buttons at each point. When one of these buttons was clicked, it toggled the handles on that button.
+            </p>
+            <p>
+                This was a start, but I felt it could be expanded further. I wanted to add multi-selection so editing large parts of the path would be easy. I started by making an array of all the “selected” buttons. Then, when a button is clicked, it clears the array and adds itself as the first item. If a button is clicked while shift is held, it adds to the array without clearing it. After looping through all the buttons, I draw a single set of handles at the center point of the selected buttons. This moves all the selected points at once.
+            </p>
+            <p>
+                In its current form, moving a point would also move the handles that define the curve of the spline. This can be useful, but I wanted to add a way to move the point without adjusting their handles as well. I added an option to do so by holding the control key while moving the point. This also works with multiple points selected.
+            </p>
+
+            <h2>Feedback / Testing</h2>
+
+            <h2>Other Uses</h2>
+            <p>
+                Thanks to the versatility of the options, I am able to use this script for elements other than moving platforms.
+            </p>
+            <p>
+                In one project, I used it for moving spikes and hazards that crush the player.
+            </p>
+            <p>
+                In another project, I used it to define enemy patrol paths.
+            </p>
+            <p>
+                I’ve also used it for non-gameplay elements, such as birds and fish.
+            </p>
+
+            <h2>Summary</h2>
+            <p>
+                While I am happy with the work I’ve done on this system, there is still room to expand.
+            </p>
+            <p>
+                Currently, the platforms move at a consistent speed across all the points, but I could see situations in which moving faster at some points and slower at others would be beneficial.
+            </p>
+            <p>
+                I would also like to be able to scale and rotate entire paths at once. I’ve experimented with adding this, but it’s had more bugs than it’s worth so far.
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
 
 </html>
