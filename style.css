@@ -135,7 +135,7 @@ main
 
 .slider-item
 {
-    padding: 5% 5% 5%;
+    padding: 5% 10% 5%;
 
     background-color: var(--paletteDark);
 
@@ -159,15 +159,29 @@ main
     z-index: -10;
 }
 
-.slider-video
+.slider-flex
 {
-    display: inline-block;
-    width: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.slider-flex > div 
+{
+    width: 100%;
+    height: 100%;
+    animation: sliderVideoRiseIn 1.5s;
+}
+
+.slider-video 
+{
+    /*display: inline-block;
+    /*width: 50%;*/
+
     box-shadow: 0 0px 30px rgba(0, 0, 0, 0.5);
     border: solid 4px var(--paletteText);
     border-radius: 15px;
     overflow: hidden;
-    animation: sliderVideoRiseIn 1.5s;
 }
 
 .slider-video video
@@ -175,21 +189,24 @@ main
     margin-bottom: -10px;
 }
 
-.slider-text
-{
+.slider-text {
     color: var(--paletteText);
-    padding: 0;
-    padding-top: 4%;
-    margin-left: 5%;
-    width: 40%;
+    text-align: left;
 
-    display: inline-block;
+    padding-right: 7%;
 
-    position: absolute;
+    /*width: 40%;*/
+    /*display: inline-block;*/
+    /*position: absolute;*/
 }
 
-.slider-text p
+.slider-text p 
 {
+    font-size: calc(1rem);
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    /*
     position: relative;
     display: block;
 
@@ -198,7 +215,14 @@ main
     text-align: center;
     width: 500px;
     margin-top: -2%;
-    font-size: 16pt;
+    */
+    }
+
+.slider-text h2
+{
+    font-size: calc(1.8rem);
+    margin: 30px 0 10px;
+    padding: 0;
 }
 
 /*.slider-text .button
@@ -207,16 +231,19 @@ main
     right: 0px;
 }*/
 
-.slider-text img
+.slider-text img 
 {
-    position: relative;
-    display: block;
+    /*
+position: absolute;
+display: block;
 
-    left: calc(50% - 200px);
+left: 10%;
+top: 0;
+*/
 
-    width: 400px;
+    width: calc(20rem);
     padding-left: -50%;
-    margin-top: -10%;
+    margin: 10px calc(-1.6rem) calc(-2rem)
 }
 
 .slider-text section
@@ -224,11 +251,11 @@ main
     position: relative;
     display: inline-block;
 
-    left: calc(50% - 200px);
+    padding: 25px;
 
-    width: 110px;
+    width: 100%;
 
-    height: 0;
+    height: 40px;
     background-color: #FFFFFF00
 }
 
@@ -837,10 +864,10 @@ h2
 
 @media screen and (max-width: 1360px) and (min-width: 1120px)
 {
-    .slider-text section .button
+    /*.slider-text section .button
     {
         display: none;
-    }
+    }*/
 
     .gameinfogroup
     {
@@ -850,35 +877,63 @@ h2
 
 @media screen and (max-width: 1120px)
 {
-    #buttons-bar
+    .slider-flex 
+    {
+        flex-direction: column;
+    }
+
+    .slider-text p, .slider-text h2
+    {
+        text-align: center;
+    }
+
+    .slider-text section .button 
+    {
+        left: calc(50% - 85px);
+    }
+
+    .slider-text section
+    {
+        width: 84%;
+    }
+
+    .slider-item img.slider-background
     {
         display: none;
     }
 
-    .slider-text img
+    #buttons-bar {
+        display: none;
+    }
+
+    .slider-text img 
     {
-        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 70%;
         padding-left: 2%;
     }
     
     .slider-item
     {
         padding: 10%;
-        padding-top: 100%;
     }
 
     .slider-video
     {
+        order: 1;
         display: block;
         width: 100%;
     }
 
-    .slider-text
+    .slider-text 
     {
-        margin-top: -130%;
+        order: 2;
         width: 70%;
-
         display: block;
+        padding: 0;
     }
 
     #minislider li
