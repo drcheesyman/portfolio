@@ -72,10 +72,12 @@ header nav
     background-color: var(--paletteDark);
 }
 
-#name-bar ul li
+#name-bar ul li 
 {
     color: var(--paletteText);
     list-style: none;
+    overflow-wrap: anywhere;
+    text-wrap: nowrap;
 }
 
 #name-bar ul
@@ -117,8 +119,33 @@ header nav
     border: solid white 1px;
 }
 
-#designer-tag
+#buttons-bar li#hamburger 
 {
+    display: none;
+}
+
+#hamburger img
+{
+    height: 84px;
+}
+
+#mobileNav
+{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 95px;
+    background-color: #000000dd;
+    height: 100vh;
+}
+
+#mobileNav li
+{
+    display: block;
+    width: 100%;
+}
+
+#designer-tag {
     font-weight: normal;
     font-size: 12pt;
 }
@@ -877,6 +904,34 @@ h2
 
 @media screen and (max-width: 1120px)
 {
+    #buttons-bar li#hamburger
+    {
+        display: block;
+    }
+
+    header nav
+    {
+        position: absolute;
+        right: 0;
+    }
+
+    .head-dropdown {
+        display: block;
+        background-color: white;
+        position: absolute;
+        padding: 0;
+        margin: -10px;
+        top: -5px;
+        left: 0;
+        right: 0;
+    }
+
+    #buttons-bar li a
+    {
+        text-align: center;
+        display: block;
+    }
+
     .slider-flex 
     {
         flex-direction: column;
@@ -892,6 +947,11 @@ h2
         left: calc(50% - 85px);
     }
 
+    .slider-flex > div 
+    {
+        animation: sliderVideoRiseIn 0s;
+    }
+
     .slider-text section
     {
         width: 84%;
@@ -902,7 +962,8 @@ h2
         display: none;
     }
 
-    #buttons-bar {
+    #buttons-bar li.no-mobile
+    {
         display: none;
     }
 

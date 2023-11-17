@@ -24,8 +24,20 @@
 
         <nav>
             <ul id="buttons-bar">
-                <li><a class="head-button" href="/">Home</a></li>
-                <li>
+                <li id="hamburger">
+                    <img onclick="myFunction()" src="media/generic/hamburger.png">
+
+                    <div id="mobileNav" style="display: none;">
+                        <ul class="head-dropdown">
+                            <li><a class="head-button" href="/">Home</a></li>
+                            <li><a class="head-button" href="levels">Levels</a></li>
+                            <li><a class="head-button" href="ux">UX</a></li>
+                            <li><a class="head-button" href="contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="no-mobile"><a class="head-button" href="/">Home</a></li>
+                <li class="no-mobile">
                     <a class="head-button" href="levels">Levels</a>
 
                     <ul class="head-dropdown">
@@ -35,7 +47,7 @@
                         <li><a class="head-button" href="games/deep.html">Dangers of the Deep</a></li>
                     </ul>
                 </li>
-                <li>
+                <li class="no-mobile">
                     <a class="head-button" href="ux">UX</a>
 
                     <ul class="head-dropdown">
@@ -44,7 +56,7 @@
                         <li><a class="head-button" href="games/time.html">Time Keeper</a></li>
                     </ul>
                 </li>
-                <li><a class="head-button" href="contact">Contact</a></li>
+                <li class="no-mobile"><a class="head-button" href="contact">Contact</a></li>
             </ul>
         </nav>
         
@@ -208,6 +220,15 @@
     <script>
         var slideIndex = 0;
         var timer;
+
+        function myFunction() {
+            var x = document.getElementById("mobileNav");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
 
         function nextDiv() {
             t = 10000;
