@@ -90,10 +90,10 @@ header nav
     padding: 30px;
 }
 
-#buttons-bar li:hover .head-dropdown
+/*#buttons-bar li:hover .head-dropdown
 {
     display: block;
-}
+}*/
 
 .head-dropdown
 {
@@ -160,9 +160,14 @@ main
     margin-top: 83px;
 }
 
+.content
+{
+    line-height: 1.5;
+}
+
 .slider-item
 {
-    padding: 5% 10% 5%;
+    padding: 5% 10% 6%;
 
     background-color: var(--paletteDark);
 
@@ -173,16 +178,20 @@ main
     /*animation: sliderContentFloatIn 1.5s;*/
 }
 
-.slider-item img.slider-background
+.mobileTimerIndicator
 {
-    position: absolute;
+    display: none;
+    height: 5px;
+    background-color: var(--paletteDark);
+    width: 70%;
+}
 
+.slider-item img.slider-background {
+    position: absolute;
     width: 100%;
     height: 100%;
-
     left: 0;
     top: 0;
-
     z-index: -10;
 }
 
@@ -904,6 +913,11 @@ h2
 
 @media screen and (max-width: 1120px)
 {
+    .mobileTimerIndicator
+    {
+        display: block;
+    }
+
     #buttons-bar li#hamburger
     {
         display: block;

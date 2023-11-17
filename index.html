@@ -25,7 +25,8 @@
         <nav>
             <ul id="buttons-bar">
                 <li id="hamburger">
-                    <img onclick="myFunction()" src="media/generic/hamburger.png">
+                    <img id="hamOpen" onclick="myFunction()" src="media/generic/hamburger.png">
+                    <img id="hamClose" style="display: none;" onclick="myFunction()" src="media/generic/hamburgerClose.png">
 
                     <div id="mobileNav" style="display: none;">
                         <ul class="head-dropdown">
@@ -97,6 +98,8 @@
                     </div>
                 </div>
             </a>
+
+            <div class="mobileTimerIndicator"></div>
         </div>
 
         <!-- -------- SPLIT SPIRIT -------- -->
@@ -113,9 +116,9 @@
                             <h2>Designing UX for a platformer</h2>
                             <p>Split Spirit is a relaxing 2D puzzle platformer. The player controls a ball of light that can be thrown from place to place, controlling whatever it touches. This was a 12 person group project in which I worked as both a Level and UX Designer.</p>
 
-                                <section>
-                                    <div class="button">Read More <i class="arrow right"></i></div>
-                                </section>
+                            <section>
+                                <div class="button">Read More <i class="arrow right"></i></div>
+                            </section>
                         </div>
 
                         <div class="slider-video">
@@ -128,6 +131,8 @@
                     </div>
                 </div>
             </a>
+
+            <div class="mobileTimerIndicator"></div>
         </div>
 
         <!-- -------- Platforming Adventure -------- -->
@@ -144,9 +149,9 @@
                             <h2>Designing levels for a platformer</h2>
                             <p>Robovania is a 2D metroidvania. The player explores the ruins of a city to unlock new abilites. This was a 5 person group project, in which I worked as a level designer.</p>
 
-                                <section>
-                                    <div class="button">Read More <i class="arrow right"></i></div>
-                                </section>
+                            <section>
+                                <div class="button">Read More <i class="arrow right"></i></div>
+                            </section>
                         </div>
 
                         <div class="slider-video">
@@ -159,6 +164,8 @@
                     </div>
                 </div>
             </a>
+
+            <div class="mobileTimerIndicator"></div>
         </div>
 
         <!--
@@ -223,10 +230,16 @@
 
         function myFunction() {
             var x = document.getElementById("mobileNav");
+            var y = document.getElementById("hamOpen");
+            var z = document.getElementById("hamClose");
             if (x.style.display === "none") {
                 x.style.display = "block";
+                y.style.display = "none";
+                z.style.display = "block";
             } else {
                 x.style.display = "none";
+                y.style.display = "block";
+                z.style.display = "none";
             }
         }
 
@@ -252,6 +265,7 @@
             var x = document.getElementsByClassName("header-slides");
             var y = document.getElementsByClassName("minislider-icon");
             var z = document.getElementsByClassName("timer");
+            var w = document.getElementsByClassName("mobileTimerIndicator");
 
             if (n > x.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = x.length }
@@ -270,6 +284,13 @@
                 if (i == slideIndex - 1) { z[slideIndex - 1].style.animation = "minisliderTimerFill " + t + "ms linear"; }
                 else { z[i].style.animation = "none"; }
             }
+
+            for (i = 0; i < w.length; i++) {
+                if (i == slideIndex - 1) { w[slideIndex - 1].style.animation = "minisliderTimerFill " + t + "ms linear"; }
+                else { z[i].style.animation = "none"; }
+            }
+
+            window.scrollTo(0, 0);
         }
     </script>
 
@@ -285,7 +306,7 @@
         </ul>
     </div>
 
-    <section>
+    <section class="content">
         <h2>Who Am I?</h2>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ut aliquam purus sit amet luctus. Vitae tortor condimentum lacinia quis. Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Senectus et netus et malesuada fames ac. Vitae semper quis lectus nulla. Non nisi est sit amet facilisis magna etiam. Ut ornare lectus sit amet est placerat. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices. At tempor commodo ullamcorper a lacus. Varius quam quisque id diam vel quam. Id venenatis a condimentum vitae sapien pellentesque. Et malesuada fames ac turpis. Nullam vehicula ipsum a arcu cursus vitae congue. Urna porttitor rhoncus dolor purus. Leo a diam sollicitudin tempor id.
