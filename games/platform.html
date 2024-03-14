@@ -126,6 +126,27 @@
                 }
             }
         }
+
+        function toggleSection(element)
+        {
+            if (element.children[2].style.display == "none")
+            {
+                element.children[0].style.display = "none";
+                element.children[1].style.display = "block";
+                element.children[2].style.display = "block";
+            }
+            else
+            {
+                element.children[0].style.display = "block";
+                element.children[1].style.display = "none";
+                element.children[2].style.display = "none";
+            }
+        }
+
+        function sectionContent(e)
+        {
+            e.stopPropagation()
+        }
     </script>
 
     <main>
@@ -140,138 +161,147 @@
                 <li>Solo project</li>
                 <li>14 weeks</li>
             </ul>
+            <div class="contentPad"></div>
 
-            <h2>Problem</h2>
-            <p>
-                Creating moving objects in game Engines often involves adding many empty game objects to a scene. This can quickly get out of hand leaving the hierarchy a mess. My goal was to create a fully self-contained solution that is easy for other people on my team to use.
-            </p>
-            <img class="slider-background" src="../media/games/platform/MovingPlatformBeforeAndAfter.png">
+            <div class="infoSectionHeader" onclick="toggleSection(this)">
+                [Technical Design] Creating a moving platform editor
+                <img class="expandCollapseButton" src="../media/generic/expand.png">
+                <img class="expandCollapseButton" src="../media/generic/collapse.png">
+                <section class="infoSection" style="display: none;" onclick="sectionContent(event)">
+                    <h2>Problem</h2>
+                    <p>
+                        Creating moving objects in game Engines often involves adding many empty game objects to a scene. This can quickly get out of hand leaving the hierarchy a mess. My goal was to create a fully self-contained solution that is easy for other people on my team to use.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformBeforeAndAfter.png">
 
-            <h2>Goals</h2>
-            <ul>
-                <li>Support various platform types for different circumstances</li>
-                <li>Easily draw paths without creating empty game objects for each point</li>
-                <li>Make custom editor so it is easy to use</li>
-            </ul>
+                    <h2>Goals</h2>
+                    <ul>
+                        <li>Support various platform types for different circumstances</li>
+                        <li>Easily draw paths without creating empty game objects for each point</li>
+                        <li>Make custom editor so it is easy to use</li>
+                    </ul>
 
-            <h2>Process/Overview</h2>
-            <ul>
-                <li>Create a basic moving platform script using game objects as target points.</li>
-                <li>Update the system to use serialized vectors for each position.</li>
-                <li>Create different options for the moving platform, including movement type, duration, looping, end behavior, and platform count.</li>
-                <li>Create a custom inspector to only draw certain attributes as they are applicable (i.e. Don’t include “end behavior” for platforms that loop)</li>
-                <li>Create a custom editor to freely control the points using handles instead of hardcoded numbers.</li>
-                <li>Update path system using splines instead of linear paths.</li>
-                <li>Update custom editor using buttons to select points so only one handle is visible at a time. Add multi-selecting and ctrl selection</li>
-                <li>Update points to include rotation</li>
-            </ul>
+                    <h2>Process/Overview</h2>
+                    <ul>
+                        <li>Create a basic moving platform script using game objects as target points.</li>
+                        <li>Update the system to use serialized vectors for each position.</li>
+                        <li>Create different options for the moving platform, including movement type, duration, looping, end behavior, and platform count.</li>
+                        <li>Create a custom inspector to only draw certain attributes as they are applicable (i.e. Don’t include “end behavior” for platforms that loop)</li>
+                        <li>Create a custom editor to freely control the points using handles instead of hardcoded numbers.</li>
+                        <li>Update path system using splines instead of linear paths.</li>
+                        <li>Update custom editor using buttons to select points so only one handle is visible at a time. Add multi-selecting and ctrl selection</li>
+                        <li>Update points to include rotation</li>
+                    </ul>
 
-            <h2>Editor Prototype</h2>
-            <p>
-                My initial goal with this tool was simply to minimize the number of empty game objects that are required to make basic point-to-point movement in Unity. I had created a moving platform script this way in the past and found it inefficient to work with. Instead, I wanted to use a list of Vectors defining each point. I used Unity’s gizmo system to draw where each point was, and even drew a series of smaller points defining the path.
-            </p>
-            <img class="slider-background" src="../media/games/platform/MovingPlatformEmptyGameObjects.jpg">
-            <p>
-                This system made adding new points far easier, but came at the downside of making it harder to move the points. This led me to do research into custom editors to find ways to add Unity’s movement handles to the scene. I created a custom editor script that draws handles at each of the points. Now, whenever a handle is moved, the point moves with it.
-            </p>
-            <img class="slider-background" src="../media/games/platform/MovingPlatformCustomPath.jpg">
+                    <h2>Editor Prototype</h2>
+                    <p>
+                        My initial goal with this tool was simply to minimize the number of empty game objects that are required to make basic point-to-point movement in Unity. I had created a moving platform script this way in the past and found it inefficient to work with. Instead, I wanted to use a list of Vectors defining each point. I used Unity’s gizmo system to draw where each point was, and even drew a series of smaller points defining the path.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformEmptyGameObjects.jpg">
+                    <p>
+                        This system made adding new points far easier, but came at the downside of making it harder to move the points. This led me to do research into custom editors to find ways to add Unity’s movement handles to the scene. I created a custom editor script that draws handles at each of the points. Now, whenever a handle is moved, the point moves with it.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformCustomPath.jpg">
 
-            <h2>Inspector Script</h2>
-            <p>
-                After I’d created the basic movement between points, I realized that there were many other features that movement platforms could have. I looked at various types of moving platforms that I would want to use in my games, as well as common types in other games, and narrowed it down to a few categories.
-            </p>
-            <p>
-                Movement Type
-            </p>
-            <ul>
-                <li>Loop</li>
-                <li>Ping-Pong</li>
-                <li>One-Way</li>
-            </ul>
-            <p>
-                End Behavior
-            </p>
-            <ul>
-                <li>Stop</li>
-                <li>Destroy</li>
-                <li>Launch</li>
-                <li>Fall</li>
-            </ul>
-            <p>
-                Spawn Type
-            </p>
-            <ul>
-                <li>One Platform</li>
-                <li>Continuous stream</li>
-                <li>Platform Count</li>
-            </ul>
-            <p>
-                Movement Trigger
-            </p>
-            <ul>
-                <li>Play on Awake</li>
-                <li>Play on player contact</li>
-                <li>Manual trigger only</li>
-            </ul>
-            <p>
-                Other Variables
-            </p>
-            <ul>
-                <li>Speed</li>
-                <li>Pause time at points</li>
-            </ul>
-            <p>
-                Many of these categories had their own variables that didn’t apply to other. For example, if the spawn type is set to “continuous”, there is a variable to determine the time between platforms. Having all of these variables at once made the platforms difficult to set up, since you wouldn’t know which options are useful in each situation. I decided to create a custom inspector alongside the debug drawer to make this more organized. I created specific conditions that would determine if an option should be visible in the inspector. This meant almost every variable would be dynamic, and only ones that are useful for the current platform type would be visible.
-            </p>
-            <img class="slider-background" src="../media/games/platform/MovingPlatformInspectorOptions.jpg">
+                    <h2>Inspector Script</h2>
+                    <p>
+                        After I’d created the basic movement between points, I realized that there were many other features that movement platforms could have. I looked at various types of moving platforms that I would want to use in my games, as well as common types in other games, and narrowed it down to a few categories.
+                    </p>
+                    <p>
+                        Movement Type
+                    </p>
+                    <ul>
+                        <li>Loop</li>
+                        <li>Ping-Pong</li>
+                        <li>One-Way</li>
+                    </ul>
+                    <p>
+                        End Behavior
+                    </p>
+                    <ul>
+                        <li>Stop</li>
+                        <li>Destroy</li>
+                        <li>Launch</li>
+                        <li>Fall</li>
+                    </ul>
+                    <p>
+                        Spawn Type
+                    </p>
+                    <ul>
+                        <li>One Platform</li>
+                        <li>Continuous stream</li>
+                        <li>Platform Count</li>
+                    </ul>
+                    <p>
+                        Movement Trigger
+                    </p>
+                    <ul>
+                        <li>Play on Awake</li>
+                        <li>Play on player contact</li>
+                        <li>Manual trigger only</li>
+                    </ul>
+                    <p>
+                        Other Variables
+                    </p>
+                    <ul>
+                        <li>Speed</li>
+                        <li>Pause time at points</li>
+                    </ul>
+                    <p>
+                        Many of these categories had their own variables that didn’t apply to other. For example, if the spawn type is set to “continuous”, there is a variable to determine the time between platforms. Having all of these variables at once made the platforms difficult to set up, since you wouldn’t know which options are useful in each situation. I decided to create a custom inspector alongside the debug drawer to make this more organized. I created specific conditions that would determine if an option should be visible in the inspector. This meant almost every variable would be dynamic, and only ones that are useful for the current platform type would be visible.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformInspectorOptions.jpg">
 
-            <h2>Spline Drawer</h2>
-            <p>
-                This system was first created for a smaller project in 2021, and was left untouched for a while. In 2023, I started working on Platforming Adventure and needed a moving platform script. I decided to build off of this script since it was already fairly robust, but I still really wanted to fix the custom editor handles. They made the tool very clunky and difficult to use properly.
-            </p>
-            <p>
-                I wanted to only show handles on points that are “selected” for movement. I replaced my original method with editor buttons at each point. When one of these buttons was clicked, it toggled the handles on that button.
-            </p>
-            <p>
-                This was a start, but I felt it could be expanded further. I wanted to add multi-selection so editing large parts of the path would be easy. I started by making an array of all the “selected” buttons. Then, when a button is clicked, it clears the array and adds itself as the first item. If a button is clicked while shift is held, it adds to the array without clearing it. After looping through all the buttons, I draw a single set of handles at the center point of the selected buttons. This moves all the selected points at once.
-            </p>
-            <p>
-                In its current form, moving a point would also move the handles that define the curve of the spline. This can be useful, but I wanted to add a way to move the point without adjusting their handles as well. I added an option to do so by holding the control key while moving the point. This also works with multiple points selected.
-            </p>
-            <img class="slider-background" src="../media/games/platform/MovingPlatformFinal.jpg">
+                    <h2>Spline Drawer</h2>
+                    <p>
+                        This system was first created for a smaller project in 2021, and was left untouched for a while. In 2023, I started working on Platforming Adventure and needed a moving platform script. I decided to build off of this script since it was already fairly robust, but I still really wanted to fix the custom editor handles. They made the tool very clunky and difficult to use properly.
+                    </p>
+                    <p>
+                        I wanted to only show handles on points that are “selected” for movement. I replaced my original method with editor buttons at each point. When one of these buttons was clicked, it toggled the handles on that button.
+                    </p>
+                    <p>
+                        This was a start, but I felt it could be expanded further. I wanted to add multi-selection so editing large parts of the path would be easy. I started by making an array of all the “selected” buttons. Then, when a button is clicked, it clears the array and adds itself as the first item. If a button is clicked while shift is held, it adds to the array without clearing it. After looping through all the buttons, I draw a single set of handles at the center point of the selected buttons. This moves all the selected points at once.
+                    </p>
+                    <p>
+                        In its current form, moving a point would also move the handles that define the curve of the spline. This can be useful, but I wanted to add a way to move the point without adjusting their handles as well. I added an option to do so by holding the control key while moving the point. This also works with multiple points selected.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformFinal.jpg">
 
-            <h2>Feedback / Testing</h2>
+                    <h2>Feedback / Testing</h2>
 
-            <h2>Other Uses</h2>
-            <p>
-                Thanks to the versatility of the options, I am able to use this script for elements other than moving platforms.
-            </p>
-            <p>
-                In one project, I used it for moving spikes and hazards that crush the player.
-            </p>
-            <p>
-                In another project, I used it to define enemy patrol paths.
-            </p>
-            <p>
-                I’ve also used it for non-gameplay elements, such as birds and fish.
-            </p>
-            <img class="slider-background" src="../media/games/platform/MovingPlatformOtherUses.jpg">
+                    <h2>Other Uses</h2>
+                    <p>
+                        Thanks to the versatility of the options, I am able to use this script for elements other than moving platforms.
+                    </p>
+                    <p>
+                        In one project, I used it for moving spikes and hazards that crush the player.
+                    </p>
+                    <p>
+                        In another project, I used it to define enemy patrol paths.
+                    </p>
+                    <p>
+                        I’ve also used it for non-gameplay elements, such as birds and fish.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformOtherUses.jpg">
 
-            <h2>Summary</h2>
-            <p>
-                While I am happy with the work I’ve done on this system, there is still room to expand.
-            </p>
-            <p>
-                Currently, the platforms move at a consistent speed across all the points, but I could see situations in which moving faster at some points and slower at others would be beneficial.
-            </p>
-            <p>
-                I would also like to be able to scale and rotate entire paths at once. I’ve experimented with adding this, but it’s had more bugs than it’s worth so far.
-            </p>
-            <img class="slider-background" src="../media/games/platform/MovingPlatformFuture.jpg">
+                    <h2>Summary</h2>
+                    <p>
+                        While I am happy with the work I’ve done on this system, there is still room to expand.
+                    </p>
+                    <p>
+                        Currently, the platforms move at a consistent speed across all the points, but I could see situations in which moving faster at some points and slower at others would be beneficial.
+                    </p>
+                    <p>
+                        I would also like to be able to scale and rotate entire paths at once. I’ve experimented with adding this, but it’s had more bugs than it’s worth so far.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformFuture.jpg">
 
+                    <button class="infoSectionCloseButton" onclick="toggleSection(this.parentElement.parentElement)">CLOSE</button>
+                </section>
+            </div>
         </section>
 
-    </main>
+</main>
 
 </body>
 

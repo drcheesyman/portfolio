@@ -1,6 +1,8 @@
 :root {
     --paletteHeaderBackground: #040D1B;
     --paletteBodyBackground: #162439;
+    --paletteSectionBackground: #525252;
+    --paletteSectionHover: #343434;
     --paletteText: #FFFFFF;
     --paletteDark: #B30A1B;
     --paletteDarkHover: #8d131f;
@@ -574,7 +576,7 @@ section
 
 h2
 {
-    font-size: 30pt;
+    font-size: 1.5rem;
 }
 
 .backgroundimage
@@ -599,6 +601,78 @@ h2
 .page h2
 {
     font-size: 1.5rem;
+}
+
+.infoSectionHeader
+{
+    background-color: var(--paletteSectionBackground);
+    padding: 20px 100px 20px 20px;
+    border-top: 2px solid var(--paletteText);
+    border-bottom: 2px solid var(--paletteText);
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: relative;
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    margin-bottom: 20px;
+}
+
+.infoSectionCloseButton
+{
+    color: var(--paletteText);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px;
+    margin: 30px auto -10px;
+    border: 2px solid var(--paletteText);
+    background-color: var(--paletteSectionBackground);
+    display: flex;
+}
+
+.infoSectionCloseButton:hover
+{
+    background-color: var(--paletteSectionHover);
+}
+
+.infoSectionHeader .expandCollapseButton
+{
+    pointer-events: none;
+    position: absolute;
+    top: -20px;
+    right: 0;
+    bottom: -20px;
+    width: calc(1.5rem + 52px);
+
+    height: calc(1.5rem + 52px);
+}
+
+.infoSectionHeader:hover:not(:has(section:hover))
+{
+    background-color: var(--paletteSectionHover);
+    cursor: pointer;
+}
+
+.infoSectionHeader section
+{
+    background-color: var(--paletteSectionBackground);
+    border-top: 2px solid var(--paletteText);
+    margin: 20px -20px -20px;
+    width: calc(100% + 20px);
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 20px 50px 40px;
+
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.infoSectionHeader section h2
+{
+    margin: 0;
 }
 
 .gameinfo
