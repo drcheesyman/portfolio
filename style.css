@@ -1240,4 +1240,9 @@ h2
     {
         width: calc(1.5rem + 52px) !important;
     }
+
+    .infoSectionHeader section
+    {
+        padding: 20px 8% 8%
+    }
 }
