@@ -1,4 +1,5 @@
-:root {
+:root
+{
     --paletteHeaderBackground: #040D1B;
     --paletteBodyBackground: #162439;
     --paletteSectionBackground: #525252;
@@ -8,11 +9,17 @@
     --paletteDarkHover: #8d131f;
 }
 
+html
+{
+    scroll-behavior: smooth;
+}
+
 body
 {
     margin: 0;
     color: var(--paletteText);
     font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--paletteBodyBackground);
 }
 
 a
@@ -254,7 +261,8 @@ main
     margin-bottom: -10px;
 }
 
-.slider-text {
+.slider-text
+{
     color: var(--paletteText);
     text-align: left;
 
@@ -281,13 +289,18 @@ main
     width: 500px;
     margin-top: -2%;
     */
-    }
+}
 
 .slider-text h2
 {
     font-size: calc(1.8rem);
     margin: 30px 0 10px;
     padding: 0;
+}
+
+.slider-text li
+{
+    padding: 5px 0;
 }
 
 /*.slider-text .button
@@ -412,6 +425,27 @@ top: 0;
     animation: sliderRaiseUp 0.2s;
     margin: -45px 20px;
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.35);
+}
+
+.pauseButton {
+    position: absolute;
+    left: 0;
+    top: -60px;
+    width: 60px;
+    height: 60px;
+    background-color: #00000000;
+    border: none;
+    opacity: 40%;
+}
+
+.pauseButton:hover
+{
+    opacity: 100%;
+}
+
+.pauseButton:active
+{
+    opacity: 30%;
 }
 
 @keyframes sliderRaiseUp
@@ -601,6 +635,30 @@ h2
 .page h2
 {
     font-size: 1.5rem;
+}
+
+.scrollPoint
+{
+    top: -100px;
+    visibility: hidden;
+    position: relative;
+}
+
+.infoSection a
+{
+    color: #00c6ff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.infoSection a:visited
+{
+    color: #00c6ff;
+}
+
+.infoSection a:hover
+{
+    text-decoration: underline;
 }
 
 .infoSectionHeader
@@ -1122,6 +1180,11 @@ h2
         padding: 0;
     }
 
+    .pauseButton
+    {
+        top: -65px;
+    }
+
     #minislider li
     {
         display: none;
@@ -1166,5 +1229,15 @@ h2
     .contentPad
     {
         height: 20px;
+    }
+
+    .content img
+    {
+        width: 90% !important;
+    }
+
+    .infoSectionHeader .expandCollapseButton
+    {
+        width: calc(1.5rem + 52px) !important;
     }
 }

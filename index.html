@@ -80,9 +80,13 @@
                         <div class="slider-text">
                             <img src="media/games/platform/platform_logo.png">
 
-                            <h2>A Fully Custom 3D Platformer</h2>
-                            <p>A solo project focused on Kishotenketsu level design and technical implementation. Everything was built from the ground up for this project. Made in Unity in 14 weeks.</p>
-
+                            <h2>Designing an entire platformer by myself</h2>
+                            <!--<p>A solo project focused on Kishotenketsu level design and technical implementation. Everything was built from the ground up for this project. Made in Unity in 14 weeks.</p>-->
+                            <ul>
+                                <li>Building levels as a full experience</li>
+                                <li>Planning for a tight deadline</li>
+                                <li>Developing skills in new fields</li>
+                            </ul>
                             <section>
                                 <div class="button">Read More <i class="arrow right"></i></div>
                             </section>
@@ -245,6 +249,7 @@
 
         function nextDiv() {
             t = 10000;
+            duration = t;
             clearTimeout(timer);
             timer = setTimeout(() => nextDiv(), t);
 
@@ -252,11 +257,65 @@
         }
 
         function setDiv(n, t) {
-            t = 20000;
+            t = 25000;
+            duration = t;
             showDivs(n, t);
             clearTimeout(timer);
             timer = setTimeout(() => nextDiv(), t);
             window.scrollTo(0, 0);
+        }
+
+        var paused = false;
+        var start = 0;
+        var remaining = 0;
+        var duration = 0;
+        function togglePause() {
+            paused = !paused;
+            var z = document.getElementsByClassName("timer");
+            var w = document.getElementsByClassName("mobileTimerIndicator");
+
+            if (!paused)
+            {
+                document.getElementById("pause").style.display = "block";
+                document.getElementById("play").style.display = "none";
+                timer = setTimeout(() => nextDiv(), remaining);
+                start = Date.now() - (duration - remaining);
+
+                for (i = 0; i < z.length; i++) {
+                    z[i].style.width = "0%";
+                    if (i == slideIndex - 1) { z[slideIndex - 1].style.animation = "minisliderTimerFill " + duration + "ms linear " + (-duration + remaining) + "ms"; }
+                    else { z[i].style.animation = "none"; }
+                }
+
+                for (i = 0; i < w.length; i++) {
+                    w[i].style.width = "0%";
+                    if (i == slideIndex - 1) { w[slideIndex - 1].style.animation = "minisliderTimerFill " + duration + "ms linear " + (-duration + remaining) + "ms"; }
+                    else { w[i].style.animation = "none"; }
+                }
+            }
+            else
+            {
+                document.getElementById("pause").style.display = "none";
+                document.getElementById("play").style.display = "block";
+                clearTimeout(timer);
+                remaining = duration - (Date.now() - start);
+
+                for (i = 0; i < z.length; i++) {
+                    z[i].style.animation = "none";
+
+                    if (i == slideIndex - 1)
+                        z[i].style.width = ((duration - remaining) / duration) * 100 + "%";
+                }
+
+                for (i = 0; i < w.length; i++) {
+                    w[i].style.animation = "none";
+
+                    if (i == slideIndex - 1)
+                        w[i].style.width = ((duration - remaining) / duration) * 100 + "%";
+                }
+            }
+
+            console.log(remaining);
         }
 
         function showDivs(n, t) {
@@ -267,6 +326,12 @@
             var y = document.getElementsByClassName("minislider-icon");
             var z = document.getElementsByClassName("timer");
             var w = document.getElementsByClassName("mobileTimerIndicator");
+
+            document.getElementById("pause").style.display = "block";
+            document.getElementById("play").style.display = "none";
+            paused = false;
+
+            start = Date.now();
 
             if (n > x.length) { slideIndex = 1 }
             if (n < 1) { slideIndex = x.length }
@@ -283,25 +348,27 @@
 
             for (i = 0; i < z.length; i++) {
                 if (i == slideIndex - 1) { z[slideIndex - 1].style.animation = "minisliderTimerFill " + t + "ms linear"; }
-                else { z[i].style.animation = "none"; }
+                else { z[i].style.animation = "none"; z[i].style.width = "0%"; }
             }
 
             for (i = 0; i < w.length; i++) {
                 if (i == slideIndex - 1) { w[slideIndex - 1].style.animation = "minisliderTimerFill " + t + "ms linear"; }
-                else { z[i].style.animation = "none"; }
+                else { w[i].style.animation = "none"; w[i].style.width = "0%"; }
             }
         }
     </script>
 
-    <div>
+    <div style="position: relative">
+        <button id="play" class="pauseButton" style="display: none;" onclick="togglePause()"><img src="media/generic/play.png" width="100%" height="100%"/></button>
+        <button id="pause" class="pauseButton" onclick="togglePause()"><img src="media/generic/pause.png" width="100%" height="100%"/></button>
         <ul id="minislider">
             <li class="minislider-icon" onclick="setDiv(1)"><img src="media/games/platform/platform_mini.jpg"><div class="timer"></div></li>
             <li class="minislider-icon" onclick="setDiv(2)"><img src="media/games/basil/basil_mini.jpg"><div class="timer"></div></li>
             <li class="minislider-icon" onclick="setDiv(3)"><img src="media/games/spirit/spirit_mini.jpg"><div class="timer"></div></li>
             <!--
-            <li class="minislider-icon" onclick="setDiv(4)"><img src="media/games/time/time_mini.jpg"><div class="timer"></div></li>
-            <li class="minislider-icon" onclick="setDiv(5)"><img src="media/games/deep/deep_mini.jpg"><div class="timer"></div></li>
-            -->
+        <li class="minislider-icon" onclick="setDiv(4)"><img src="media/games/time/time_mini.jpg"><div class="timer"></div></li>
+        <li class="minislider-icon" onclick="setDiv(5)"><img src="media/games/deep/deep_mini.jpg"><div class="timer"></div></li>
+        -->
         </ul>
     </div>
 

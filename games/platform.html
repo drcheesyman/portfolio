@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="utf-8">
-<title>Luke Williamson - Designer</title>
+<title>Platforming Adventure</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../style.css">
 
@@ -26,42 +26,22 @@
             <nav>
                 <ul id="buttons-bar">
                     <li id="hamburger">
-                        <img id="hamOpen" onclick="myFunction()" src="../media/generic/hamburger.png">
-                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="../media/generic/hamburgerClose.png">
+                        <img id="hamOpen" onclick="myFunction()" src="media/generic/hamburger.png">
+                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="media/generic/hamburgerClose.png">
 
                         <div id="mobileNav" style="display: none;">
                             <ul class="head-dropdown">
                                 <li><a class="head-button" href="../">Home</a></li>
-                                <li><a class="head-button" href="../levels">Levels</a></li>
-                                <li><a class="head-button" href="../ux">UX</a></li>
+                                <li><a class="head-button" href="../projects">Projects</a></li>
                                 <li><a class="head-button" href="../contact">Contact</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="no-mobile"><a class="head-button" href="../">Home</a></li>
-                    <li class="no-mobile">
-                        <a class="head-button" href="../levels">Levels</a>
-
-                        <ul class="head-dropdown">
-                            <li><a class="head-button" href="../games/basil.html">Basil and the Isles of Spice</a></li>
-                            <li><a class="head-button" href="../games/spirit.html">Split Spirit</a></li>
-                            <li><a class="head-button" href="../games/robovania.html">Robovania</a></li>
-                            <li><a class="head-button" href="../games/deep.html">Dangers of the Deep</a></li>
-                        </ul>
-                    </li>
-                    <li class="no-mobile">
-                        <a class="head-button" href="../ux">UX</a>
-
-                        <ul class="head-dropdown">
-                            <li><a class="head-button" href="../games/basil.html">Basil and the Isles of Spice</a></li>
-                            <li><a class="head-button" href="../games/spirit.html">Split Spirit</a></li>
-                            <li><a class="head-button" href="../games/time.html">Time Keeper</a></li>
-                        </ul>
-                    </li>
+                    <li class="no-mobile"><a class="head-button" href="../projects">Projects</a></li>
                     <li class="no-mobile"><a class="head-button" href="../contact">Contact</a></li>
                 </ul>
             </nav>
-
         </div>
 
     </header>
@@ -143,6 +123,13 @@
             }
         }
 
+        function enableSection(element)
+        {
+            element.children[0].style.display = "none";
+            element.children[1].style.display = "block";
+            element.children[2].style.display = "block";
+        }
+
         function sectionContent(e)
         {
             e.stopPropagation()
@@ -156,12 +143,123 @@
             <img class="logo" src="../media/games/platform/platform_logo.png">
 
             <h2>Overview</h2>
-            <ul>
-                <li>Made in Unity</li>
-                <li>Solo project</li>
-                <li>14 weeks</li>
-            </ul>
+            <p>
+                Platforming Adventure is a solo project I created to practice level design. I wanted to lean into rapid iteration, focusing on the Kishotenketsu design philosophy popularized by the Super Mario games. This involves introducing a mechanic, developing it, and adding an unexpected twist. This is all done in a short amount of time, usually just a level or two, and then the mechanic is dropped to focus on something new.
+            </p>
             <div class="contentPad"></div>
+
+            <div class="infoSectionHeader" onclick="toggleSection(this)">
+                Building Levels as a Full Experience
+                <img class="expandCollapseButton" src="../media/generic/expand.png">
+                <img class="expandCollapseButton" src="../media/generic/collapse.png">
+                <section class="infoSection" style="display: none;" onclick="sectionContent(event)">
+                    <h2>Overview</h2>
+                    <p>
+                        I believe Level Design is the most important part of a good platformer. It takes thorough planning to create levels that are each exciting and unique. If done properly, any level should be a fun experience on its own. Together, a group of great levels can make any game stand out.
+                    </p>
+
+                    <div class="contentPad"></div>
+                    <h2>Objective</h2>
+                    <p>
+                        My goal for this project was to build three levels, each focused on a different mechanic. Each level should be:
+                    </p>
+                    <ul>
+                        <li>Support various platform types for different circumstances</li>
+                        <li>Easily draw paths without creating empty game objects for each point</li>
+                        <li>Make custom editor so it is easy to use</li>
+                    </ul>
+                    <p>
+                        Since I was building the entire game myself, I had some limitations. The unique mechanics for each level would also have to be programmed by me, and would cut into some of the level design time.
+                    </p>
+
+                    <div class="contentPad"></div>
+                    <h2>Research</h2>
+                    <p>
+                        My main goal for this project was to practice a form of level design called Kishotenketsu. In this style, a mechanic is introduced and developed at the start of a level. It then has some form of twist that uses the mechanic in new and unexpected ways. At the end, it returns to its simple form for a final challenge.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/kishotenketsu-example.jpg" style="width: 70%">
+                    <p>
+                        I researched the Kishotenketsu design style through various videos and blogs. I also played levels from several different games to see how it was implemented. I looked into how mechanics were implemented and broken into smaller challenges. One thing I hadn’t considered was that there is a “cooldown” area between each challenge. This would be a safe place to collect some coins or power-ups, a checkpoint, or even just a straight path with no enemies. This gives the player some variety, so the entire level isn’t just the core mechanic.
+                    </p>
+
+                    <div class="contentPad"></div>
+                    <div class="scrollPoint" id="retry-level"></div>
+                    <h2>Picking a Core Mechanic</h2>
+                    <p>
+                        When I started designing the first level, my goal was to pick a mechanic to focus on. My first attempt was to feature breakable blocks that the player could destroy by attacking. When I tried sketching out some challenges, I discovered that the mechanic didn’t seem to stand on its own. I did more research to figure out why it didn’t work. I found out that players abilities are best used to accent the level’s mechanic, rather than being the mechanic themselves. For example, the dash ability in Celeste is present in every level, but no level is just about dashing. Rather, they each have their own unique features that work with the dash to let the player show off their skills. With this in mind, I wanted to find a new mechanic that would highlight the player controller.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/LevelDesignFirstSketch.jpg" style="width: 40%">
+
+                    <div class="contentPad"></div>
+                    <h2>Rapid Prototyping</h2>
+                    <p>
+                        To find something fun to build my levels around, I created a test level with everything I could think of. I took simple scripts for moving and rotating platforms and made as many combinations as I could. Then, I ran around the level and played with each one to see what they played like.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/platform-testing.jpg" style="width: 70%">
+                    <p>
+                        I particularly liked the idea of rotating platforms with spikes on them, and started thinking about other ways I could build off that concept.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/chosen-platform.jpg" style="width: 30%">
+
+                    <div class="contentPad"></div>
+                    <h2>Back to the Drawing Board</h2>
+                    <p>
+                        Once I had a core mechanic, I went back to sketching out a level.
+                    </p>
+
+                    <div class="contentPad"></div>
+                    <div class="scrollPoint" id="playtest-level"></div>
+                    <h2>Playtest Feedback</h2>
+                    <p>
+                        I had many people play my level over the course of the project. There were many minor pieces of feedback that I implemented over the weeks, but one stands out in particular. I designed my level from a sidescroller perspective. Most playtesters, however, but the
+                    </p>
+
+                    <button class="infoSectionCloseButton" onclick="toggleSection(this.parentElement.parentElement)">CLOSE</button>
+                </section>
+            </div>
+
+            <div class="infoSectionHeader" onclick="toggleSection(this)">
+                Planning for a tight deadline
+                <img class="expandCollapseButton" src="../media/generic/expand.png">
+                <img class="expandCollapseButton" src="../media/generic/collapse.png">
+                <section class="infoSection" style="display: none;" onclick="sectionContent(event)">
+                    <h2>Overview</h2>
+                    <p>
+                        This project was built from scratch in just ten weeks. While the level design was my core focus, everything had to be built by me. It took a lot of planning to make sure the project stayed on schedule. Throughout the duration of the project, I had to change and cut many features to make sure the game would be finished in time. It’s far from what was originally planned, but I’m happy with how it turned out.
+                    </p>
+
+                    <div class="contentPad"></div>
+                    <h2>Creating a Schedule</h2>
+                    <p>
+                        I started by making a rough outline of what work I needed to have done by the end of each week. I broke the time into three categories: system, level, and polish. The first two weeks were dedicated to developing the player controller, adding enemies, and updating the camera. The bulk of the time was dedicated to designing the levels, with two weeks planned for each. The last two weeks were for cleaning up external features to make the game more appealing.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/full-schedule.jpg" style="width: 30%">
+                    <p>
+                        At the start of each week, I would look at my plan to see what I needed to do. I would then make a list of specific tasks that I need to accomplish that week. As I completed them, I marked each one to keep track of progress. I also tracked how long each task took so I would be able to plan better in future weeks.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/partial-schedule.jpg" style="width: 70%">
+
+                    <div class="contentPad"></div>
+                    <h2>Unexpected Roadblocks</h2>
+                    <p>
+                        I had planned to spend two weeks on each level initially. One week would be sketching, whiteboxing, and playtesting, and the other would be bug fixing, setdressing, and polish. When I started working on the first level, the sketching and whiteboxing phase <a href="#retry-level" onclick="enableSection(document.getElementById(`retry-level`).parentElement.parentElement)">didn’t go as planned</a>. I ended up losing most of that week and starting the level over from scratch, which put me behind schedule. I was able to create a much stronger level, but knew I would still need more time to polish it.
+                    </p>
+
+                    <div class="contentPad"></div>
+                    <h2>Adjusting the Plan</h2>
+                    <p>
+                        At this point, I had a difficult decision to make. If I stuck to my original plan, I wouldn’t have time to polish the levels. Otherwise, I could make just one level, which would prevent me from practicing rapid iteration. It was a difficult decision, but I decided to cut down to just one level. While I had hoped to focus on building several levels with unique mechanics, I knew that I wouldn’t be able to create strong levels if I also had to program the mechanics too. I already had a working level select screen, so I could always add more levels in the future. This way, I could guarantee I reached a level of polish I was happy with.
+                    </p>
+
+                    <div class="contentPad"></div>
+                    <h2>Finishing the Game</h2>
+                    <p>
+                        Following the new plan, everything went smoothly through the level design process. Thanks to the extra time, I was able to <a href="#playtest-level" onclick="enableSection(document.getElementById(`playtest-level`).parentElement.parentElement)">adapt to unexpected feedback</a> that came up during playtests.
+                    </p>
+
+                    <button class="infoSectionCloseButton" onclick="toggleSection(this.parentElement.parentElement)">CLOSE</button>
+                </section>
+            </div>
 
             <div class="infoSectionHeader" onclick="toggleSection(this)">
                 [Technical Design] Creating a moving platform editor
@@ -172,8 +270,9 @@
                     <p>
                         Creating moving objects in game Engines often involves adding many empty game objects to a scene. This can quickly get out of hand leaving the hierarchy a mess. My goal was to create a fully self-contained solution that is easy for other people on my team to use.
                     </p>
-                    <img class="slider-background" src="../media/games/platform/MovingPlatformBeforeAndAfter.png">
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformBeforeAndAfter.png" style="width: 70%">
 
+                    <div class="contentPad"></div>
                     <h2>Goals</h2>
                     <ul>
                         <li>Support various platform types for different circumstances</li>
@@ -181,6 +280,7 @@
                         <li>Make custom editor so it is easy to use</li>
                     </ul>
 
+                    <div class="contentPad"></div>
                     <h2>Process/Overview</h2>
                     <ul>
                         <li>Create a basic moving platform script using game objects as target points.</li>
@@ -193,16 +293,18 @@
                         <li>Update points to include rotation</li>
                     </ul>
 
+                    <div class="contentPad"></div>
                     <h2>Editor Prototype</h2>
                     <p>
                         My initial goal with this tool was simply to minimize the number of empty game objects that are required to make basic point-to-point movement in Unity. I had created a moving platform script this way in the past and found it inefficient to work with. Instead, I wanted to use a list of Vectors defining each point. I used Unity’s gizmo system to draw where each point was, and even drew a series of smaller points defining the path.
                     </p>
-                    <img class="slider-background" src="../media/games/platform/MovingPlatformEmptyGameObjects.jpg">
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformEmptyGameObjects.jpg" style="width: 40%">
                     <p>
                         This system made adding new points far easier, but came at the downside of making it harder to move the points. This led me to do research into custom editors to find ways to add Unity’s movement handles to the scene. I created a custom editor script that draws handles at each of the points. Now, whenever a handle is moved, the point moves with it.
                     </p>
-                    <img class="slider-background" src="../media/games/platform/MovingPlatformCustomPath.jpg">
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformCustomPath.jpg" style="width: 40%">
 
+                    <div class="contentPad"></div>
                     <h2>Inspector Script</h2>
                     <p>
                         After I’d created the basic movement between points, I realized that there were many other features that movement platforms could have. I looked at various types of moving platforms that I would want to use in my games, as well as common types in other games, and narrowed it down to a few categories.
@@ -250,8 +352,9 @@
                     <p>
                         Many of these categories had their own variables that didn’t apply to other. For example, if the spawn type is set to “continuous”, there is a variable to determine the time between platforms. Having all of these variables at once made the platforms difficult to set up, since you wouldn’t know which options are useful in each situation. I decided to create a custom inspector alongside the debug drawer to make this more organized. I created specific conditions that would determine if an option should be visible in the inspector. This meant almost every variable would be dynamic, and only ones that are useful for the current platform type would be visible.
                     </p>
-                    <img class="slider-background" src="../media/games/platform/MovingPlatformInspectorOptions.jpg">
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformInspectorOptions.jpg" style="width: 30%">
 
+                    <div class="contentPad"></div>
                     <h2>Spline Drawer</h2>
                     <p>
                         This system was first created for a smaller project in 2021, and was left untouched for a while. In 2023, I started working on Platforming Adventure and needed a moving platform script. I decided to build off of this script since it was already fairly robust, but I still really wanted to fix the custom editor handles. They made the tool very clunky and difficult to use properly.
@@ -265,10 +368,11 @@
                     <p>
                         In its current form, moving a point would also move the handles that define the curve of the spline. This can be useful, but I wanted to add a way to move the point without adjusting their handles as well. I added an option to do so by holding the control key while moving the point. This also works with multiple points selected.
                     </p>
-                    <img class="slider-background" src="../media/games/platform/MovingPlatformFinal.jpg">
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformFinal.jpg" style="width: 40%">
 
                     <h2>Feedback / Testing</h2>
 
+                    <div class="contentPad"></div>
                     <h2>Other Uses</h2>
                     <p>
                         Thanks to the versatility of the options, I am able to use this script for elements other than moving platforms.
@@ -282,8 +386,9 @@
                     <p>
                         I’ve also used it for non-gameplay elements, such as birds and fish.
                     </p>
-                    <img class="slider-background" src="../media/games/platform/MovingPlatformOtherUses.jpg">
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformOtherUses.jpg" style="width: 80%">
 
+                    <div class="contentPad"></div>
                     <h2>Summary</h2>
                     <p>
                         While I am happy with the work I’ve done on this system, there is still room to expand.
@@ -294,7 +399,7 @@
                     <p>
                         I would also like to be able to scale and rotate entire paths at once. I’ve experimented with adding this, but it’s had more bugs than it’s worth so far.
                     </p>
-                    <img class="slider-background" src="../media/games/platform/MovingPlatformFuture.jpg">
+                    <img class="slider-background" src="../media/games/platform/MovingPlatformFuture.jpg" style="width: 70%">
 
                     <button class="infoSectionCloseButton" onclick="toggleSection(this.parentElement.parentElement)">CLOSE</button>
                 </section>
