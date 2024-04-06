@@ -26,8 +26,8 @@
             <nav>
                 <ul id="buttons-bar">
                     <li id="hamburger">
-                        <img id="hamOpen" onclick="myFunction()" src="media/generic/hamburger.png">
-                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="media/generic/hamburgerClose.png">
+                        <img id="hamOpen" onclick="myFunction()" src="../media/generic/hamburger.png">
+                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="../media/generic/hamburgerClose.png">
 
                         <div id="mobileNav" style="display: none;">
                             <ul class="head-dropdown">
@@ -123,16 +123,30 @@
             }
         }
 
-        function enableSection(element)
+        function enableSection(name)
         {
+            var element = document.getElementById(name).parentElement.parentElement;
+
             element.children[0].style.display = "none";
             element.children[1].style.display = "block";
             element.children[2].style.display = "block";
+
+            playHighlight(name);
         }
 
         function sectionContent(e)
         {
             e.stopPropagation()
+        }
+
+        function playHighlight(name)
+        {
+            var element = document.getElementById(name + '-highlight');
+            element.style.animation = "highlightFade 5s";
+
+            setTimeout(function () {
+                element.style.animation = "none";
+            }, 4000);
         }
     </script>
 
@@ -144,7 +158,7 @@
 
             <h2>Overview</h2>
             <p>
-                Platforming Adventure is a solo project I created to practice level design. I wanted to lean into rapid iteration, focusing on the Kishotenketsu design philosophy popularized by the Super Mario games. This involves introducing a mechanic, developing it, and adding an unexpected twist. This is all done in a short amount of time, usually just a level or two, and then the mechanic is dropped to focus on something new.
+                Platforming Adventure is a solo project I created to practice level design. I wanted to lean into rapid iteration, focusing on the <a href="#kishotenketsu" onclick="enableSection(`kishotenketsu`)">Kishotenketsu</a> design philosophy popularized by the Super Mario games. This involves introducing a mechanic, developing it, and adding an unexpected twist. This is all done in a short amount of time, usually just a level or two, and then the mechanic is dropped to focus on something new.
             </p>
             <div class="contentPad"></div>
 
@@ -173,9 +187,10 @@
                     </p>
 
                     <div class="contentPad"></div>
+                    <div class="scrollPoint" id="kishotenketsu"></div>
                     <h2>Research</h2>
                     <p>
-                        My main goal for this project was to practice a form of level design called Kishotenketsu. In this style, a mechanic is introduced and developed at the start of a level. It then has some form of twist that uses the mechanic in new and unexpected ways. At the end, it returns to its simple form for a final challenge.
+                        My main goal for this project was to practice a form of level design called <span id="kishotenketsu-highlight" class="highlight">Kishotenketsu</span>. In this style, a mechanic is introduced and developed at the start of a level. It then has some form of twist that uses the mechanic in new and unexpected ways. At the end, it returns to its simple form for a final challenge.
                     </p>
                     <img class="slider-background" src="../media/games/platform/kishotenketsu-example.jpg" style="width: 70%">
                     <p>
@@ -186,9 +201,9 @@
                     <div class="scrollPoint" id="retry-level"></div>
                     <h2>Picking a Core Mechanic</h2>
                     <p>
-                        When I started designing the first level, my goal was to pick a mechanic to focus on. My first attempt was to feature breakable blocks that the player could destroy by attacking. When I tried sketching out some challenges, I discovered that the mechanic didn’t seem to stand on its own. I did more research to figure out why it didn’t work. I found out that players abilities are best used to accent the level’s mechanic, rather than being the mechanic themselves. For example, the dash ability in Celeste is present in every level, but no level is just about dashing. Rather, they each have their own unique features that work with the dash to let the player show off their skills. With this in mind, I wanted to find a new mechanic that would highlight the player controller.
-                    </p>
-                    <img class="slider-background" src="../media/games/platform/LevelDesignFirstSketch.jpg" style="width: 40%">
+                        When I started designing the first level, my goal was to pick a mechanic to focus on. My first attempt was to feature breakable blocks that the player could destroy by attacking. When I tried sketching out some challenges, I discovered that the mechanic didn’t seem to stand on its own. I did more research to figure out why it didn’t work. I found out that players abilities are best used to accent the level’s mechanic, rather than being the mechanic themselves. For example, the dash ability in Celeste is present in every level, but no level is just about dashing. Rather, they each have their own unique features that work with the dash to let the player show off their skills. With this in mind, I wanted to find a new mechanic that would highlight the player controller. This meant that <span id="retry-level-highlight" class="highlight">I would have to redesign the whole level</span>, but I knew that it would allow me to make something stronger in the end.
+</p>
+                    <img class="slider-background" src="../media/games/platform/LevelDesignFirstSketch.jpg" style="width: 85%">
 
                     <div class="contentPad"></div>
                     <h2>Rapid Prototyping</h2>
@@ -199,19 +214,37 @@
                     <p>
                         I particularly liked the idea of rotating platforms with spikes on them, and started thinking about other ways I could build off that concept.
                     </p>
-                    <img class="slider-background" src="../media/games/platform/chosen-platform.jpg" style="width: 30%">
+                    <!--<img class="slider-background" src="../media/games/platform/chosen-platform.jpg" style="width: 30%">-->
 
                     <div class="contentPad"></div>
                     <h2>Back to the Drawing Board</h2>
                     <p>
-                        Once I had a core mechanic, I went back to sketching out a level.
+                        Once I had a better core mechanic, I went back to creating the level. I started by coming up with some ideas that I thought would be interesting using the mechanic. Then, I tried to find a twist that would expand on the mechanic. For this level, I decided that the spinning spikes would start rolling at some point. After I had a twist, I designed more sections using the moving spikes concept. Once I had several ideas for interesting sections, I started ranking them based on their difficulty. I narrowed down my selection to a few interesting ideas and started sketching the level, placing the sections in increasing difficulty as I went.
                     </p>
+                    <img class="slider-background" src="../media/games/platform/LevelDesignSecondSketch.jpg" style="width: 50%">
 
                     <div class="contentPad"></div>
                     <div class="scrollPoint" id="playtest-level"></div>
                     <h2>Playtest Feedback</h2>
                     <p>
-                        I had many people play my level over the course of the project. There were many minor pieces of feedback that I implemented over the weeks, but one stands out in particular. I designed my level from a sidescroller perspective. Most playtesters, however, but the
+                        I had many people play my level over the course of the project. There were many pieces of feedback that I implemented over the weeks. <span id="playtest-level-highlight" class="highlight">I increased the number of checkpoints, changed the size of some jumps, and even removed some sections entirely. The biggest surprise was how player struggled with the camera.</span> I had designed each section of the level to play like a sidescroller, but most players moved the camera behind them, and missed jumps because of it.
+</p>
+                    <img class="slider-background" src="../media/games/platform/camera-problem.jpg" style="width: 70%">
+                    <p>
+                        After realizing this, I changed the level design again. I kept most of the sections the same, but removed all the areas where the player had to turn around a corner. I also removed the camera controls and instead added triggers that would adjust the camera’s zoom and distance for each challenge. This made it much easier for playtesters to complete sections.
+                    </p>
+
+                    <div class="contentPad"></div>
+                    <h2>Setdressing</h2>
+                    <p>
+                        Decorating the level was a fairly straightforward process. Because of all the spinning hazards, I decided that the level should be a factory. I created simple textures for the walls, floors, and platforms. I made the spinning objects into gears, and the spike hazards into flames. Then, all I had to do was place assets throughout the stage to decorate it. Adding the art, animations, and music really brought the level to life.
+                    </p>
+                    <img class="slider-background" src="../media/games/platform/factory-final.gif" style="width: 60%">
+
+                    <div class="contentPad"></div>
+                    <h2>Results</h2>
+                    <p>
+                        Creating this level ended up being far more beneficial than I was originally expecting. I learned many valuable lessons that will help me design levels better in the future. I now know that a strong core mechanic shouldn’t rely on the player’s abilities, and choosing one is the first and most important step in the design process. I also learned that giving players less control is sometimes better, as removing the camera control option allowed more playtesters to clear the stage. This project ended up being a really useful exercise in many ways, and my level design skills improved greatly because of it.
                     </p>
 
                     <button class="infoSectionCloseButton" onclick="toggleSection(this.parentElement.parentElement)">CLOSE</button>
@@ -242,7 +275,7 @@
                     <div class="contentPad"></div>
                     <h2>Unexpected Roadblocks</h2>
                     <p>
-                        I had planned to spend two weeks on each level initially. One week would be sketching, whiteboxing, and playtesting, and the other would be bug fixing, setdressing, and polish. When I started working on the first level, the sketching and whiteboxing phase <a href="#retry-level" onclick="enableSection(document.getElementById(`retry-level`).parentElement.parentElement)">didn’t go as planned</a>. I ended up losing most of that week and starting the level over from scratch, which put me behind schedule. I was able to create a much stronger level, but knew I would still need more time to polish it.
+                        I had planned to spend two weeks on each level initially. One week would be sketching, whiteboxing, and playtesting, and the other would be bug fixing, setdressing, and polish. When I started working on the first level, the sketching and whiteboxing phase <a href="#retry-level" onclick="enableSection(`retry-level`)">didn’t go as planned</a>. I ended up losing most of that week and starting the level over from scratch, which put me behind schedule. I was able to create a much stronger level, but knew I would still need more time to polish it.
                     </p>
 
                     <div class="contentPad"></div>
@@ -254,7 +287,7 @@
                     <div class="contentPad"></div>
                     <h2>Finishing the Game</h2>
                     <p>
-                        Following the new plan, everything went smoothly through the level design process. Thanks to the extra time, I was able to <a href="#playtest-level" onclick="enableSection(document.getElementById(`playtest-level`).parentElement.parentElement)">adapt to unexpected feedback</a> that came up during playtests.
+                        Following the new plan, everything went smoothly through the level design process. Thanks to the extra time, I was able to <a href="#playtest-level" onclick="enableSection(`playtest-level`)">adapt to unexpected feedback</a> that came up during playtests. This allowed me to make some drastic changes to the level that improved the game as a whole. Being willing to adapt the schedule prevented me from spreading myself too thin and allowed me to make a strong project in the end.
                     </p>
 
                     <button class="infoSectionCloseButton" onclick="toggleSection(this.parentElement.parentElement)">CLOSE</button>

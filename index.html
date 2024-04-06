@@ -69,6 +69,10 @@
 <main>
 
     <div id="slider-holder">
+
+        <button class="transButton arrowButton" onclick="prevDiv()" style="left: 0;"><img src="media/generic/arrow-l.png" width="100%" height="100%" /></button>
+        <button class="transButton arrowButton" onclick="nextDiv()" style="right: 0;"><img src="media/generic/arrow-r.png" width="100%" height="100%" /></button>
+
         <!-- -------- Platforming Adventure -------- -->
         <div class="header-slides">
             <a href="games/platform.html">
@@ -79,7 +83,6 @@
                     <div class="slider-flex">
                         <div class="slider-text">
                             <img src="media/games/platform/platform_logo.png">
-
                             <h2>Designing an entire platformer by myself</h2>
                             <!--<p>A solo project focused on Kishotenketsu level design and technical implementation. Everything was built from the ground up for this project. Made in Unity in 14 weeks.</p>-->
                             <ul>
@@ -109,7 +112,7 @@
         <!-- -------- OLYMPUS -------- -->
         <div class="header-slides" style="display: none;">
             <a href="games/combat.html">
-                <div class="slider-item" style="background-color: #876b56">
+                <div class="slider-item" style="background-color: #3b4950">
 
                     <img class="slider-background" src="media/games/combat/combat_bg.jpg">
 
@@ -142,7 +145,7 @@
         <!-- -------- BASIL -------- -->
         <div class="header-slides" style="display: none;">
             <a href="games/basil.html">
-                <div class="slider-item" style="background-color: #0077eb">
+                <div class="slider-item" style="background-color: #115ca6">
 
                     <img class="slider-background" src="media/games/basil/basil_bg.jpg">
 
@@ -289,6 +292,15 @@
             showDivs(slideIndex + 1, t);
         }
 
+        function prevDiv() {
+            t = 10000;
+            duration = t;
+            clearTimeout(timer);
+            timer = setTimeout(() => nextDiv(), t);
+
+            showDivs(slideIndex - 1, t);
+        }
+
         function setDiv(n, t) {
             t = 25000;
             duration = t;
@@ -392,13 +404,13 @@
     </script>
 
     <div style="position: relative">
-        <button id="play" class="pauseButton" style="display: none;" onclick="togglePause()"><img src="media/generic/play.png" width="100%" height="100%"/></button>
-        <button id="pause" class="pauseButton" onclick="togglePause()"><img src="media/generic/pause.png" width="100%" height="100%"/></button>
+        <button id="play" class="transButton pauseButton" style="display: none;" onclick="togglePause()"><img src="media/generic/play.png" width="100%" height="100%"/></button>
+        <button id="pause" class="transButton pauseButton" onclick="togglePause()"><img src="media/generic/pause.png" width="100%" height="100%"/></button>
         <ul id="minislider">
             <li class="minislider-icon" onclick="setDiv(1)"><img src="media/games/platform/platform_mini.jpg"><div class="timer"></div></li>
             <li class="minislider-icon" onclick="setDiv(2)"><img src="media/games/combat/combat_mini.jpg"><div class="timer"></div></li>
-            <li class="minislider-icon" onclick="setDiv(2)"><img src="media/games/basil/basil_mini.jpg"><div class="timer"></div></li>
-            <li class="minislider-icon" onclick="setDiv(3)"><img src="media/games/spirit/spirit_mini.jpg"><div class="timer"></div></li>
+            <li class="minislider-icon" onclick="setDiv(3)"><img src="media/games/basil/basil_mini.jpg"><div class="timer"></div></li>
+            <li class="minislider-icon" onclick="setDiv(4)"><img src="media/games/spirit/spirit_mini.jpg"><div class="timer"></div></li>
             <!--
     <li class="minislider-icon" onclick="setDiv(4)"><img src="media/games/time/time_mini.jpg"><div class="timer"></div></li>
     <li class="minislider-icon" onclick="setDiv(5)"><img src="media/games/deep/deep_mini.jpg"><div class="timer"></div></li>

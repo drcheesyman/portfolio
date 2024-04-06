@@ -427,15 +427,31 @@ top: 0;
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.35);
 }
 
-.pauseButton {
+.transButton
+{
+    background-color: #00000000;
+    opacity: 40%;
+    border: none;
+}
+
+.arrowButton
+{
+    visibility: hidden;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    z-index: 100;
+    top: 85vw;
+    padding: 0;
+}
+
+.pauseButton
+{
     position: absolute;
     left: 0;
     top: -60px;
     width: 60px;
     height: 60px;
-    background-color: #00000000;
-    border: none;
-    opacity: 40%;
 }
 
 .pauseButton:hover
@@ -644,21 +660,43 @@ h2
     position: relative;
 }
 
-.infoSection a
+.content a
 {
     color: #00c6ff;
     font-weight: bold;
     text-decoration: none;
 }
 
-.infoSection a:visited
+.content a:visited
 {
     color: #00c6ff;
 }
 
-.infoSection a:hover
+.content a:hover
 {
     text-decoration: underline;
+}
+
+.highlight
+{
+    background-color: #7c704e00;
+    padding: 2px 5px;
+    margin: -2px -5px;
+}
+
+@keyframes highlightFade
+{
+    0% {
+        background-color: #7c704eFF;
+    }
+
+    50% {
+        background-color: #7c704eFF;
+    }
+
+    100% {
+        background-color: #7c704e00;
+    }
 }
 
 .infoSectionHeader
@@ -1180,6 +1218,11 @@ h2
         padding: 0;
     }
 
+    .arrowButton
+    {
+        visibility: visible;
+    }
+
     .pauseButton
     {
         top: -65px;
@@ -1207,13 +1250,13 @@ h2
 
     .content
     {
-        padding: 10px 12% 50px;
+        padding: 10px 5% 50px;
         line-height: 1.5;
     }
 
     .content p
     {
-        font-size: 10pt;
+        font-size: 12pt;
     }
 
     .content h2
@@ -1243,6 +1286,12 @@ h2
 
     .infoSectionHeader section
     {
-        padding: 20px 8% 8%
+        padding: 20px 20px 8%;
+        width: calc(100% + 80px);
+    }
+
+    .infoSectionCloseButton
+    {
+        margin: 6% auto 0;
     }
 }
