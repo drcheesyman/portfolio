@@ -1307,6 +1307,11 @@ h2
         font-size: 12pt;
     }
 
+    .content li
+    {
+        font-size: 12pt;
+    }
+
     .content h2
     {
         font-size: 18pt;
