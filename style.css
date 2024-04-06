@@ -1339,10 +1339,18 @@ h2
     }
 }
 
-@media only screen and (orientation: landscape)
+@media (orientation: landscape)
 {
     .header
     {
         position: absolute;
+    }
+}
+
+@media (orientation: portrait)
+{
+    .header
+    {
+        position: fixed;
     }
 }
