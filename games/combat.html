@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<title>Olympus Quest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body onload="load();">
+    <header>
+
+        <div class="navbar">
+            <div id="name-bar">
+                <a href="../">
+                    <ul>
+                        <li id="name-tag">Luke Williamson</li>
+                        <li id="designer-tag"><i>Designer</i></li>
+                    </ul>
+                </a>
+            </div>
+
+            <nav>
+                <ul id="buttons-bar">
+                    <li id="hamburger">
+                        <img id="hamOpen" onclick="myFunction()" src="../media/generic/hamburger.png">
+                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="../media/generic/hamburgerClose.png">
+
+                        <div id="mobileNav" style="display: none;">
+                            <ul class="head-dropdown">
+                                <li><a class="head-button" href="../">Home</a></li>
+                                <li><a class="head-button" href="../projects">Projects</a></li>
+                                <li><a class="head-button" href="../contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="no-mobile"><a class="head-button" href="../">Home</a></li>
+                    <li class="no-mobile"><a class="head-button" href="../projects">Projects</a></li>
+                    <li class="no-mobile"><a class="head-button" href="../contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+
+    <script>
+
+        function myFunction() {
+            var x = document.getElementById("mobileNav");
+            var y = document.getElementById("hamOpen");
+            var z = document.getElementById("hamClose");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+                z.style.display = "block";
+            } else {
+                x.style.display = "none";
+                y.style.display = "block";
+                z.style.display = "none";
+            }
+        }
+
+
+        function load() {
+            nextDiv(0, 'region1');
+            nextDiv(0, 'region2');
+        }
+
+        function nextDiv(d, s) {
+            var i;
+            var dots = document.getElementById(s).getElementsByClassName("multicontentdots")[0].children;
+
+            for (i = 0; 1 < dots.length; i++) {
+                if (dots[i].className == "selected") {
+                    showDivs(i + d, s);
+                    return;
+                }
+            }
+        }
+
+        function showDivs(n, s) {
+            var i;
+
+            var region = document.getElementById(s);
+
+            var img = region.getElementsByClassName("multicontentimages")[0].children;
+            var dot = region.getElementsByClassName("multicontentdots")[0].children;
+            var txt = region.getElementsByClassName("multicontenttexts")[0].children;
+
+            if (n >= dot.length) { n = 0 }
+            if (n < 0) { n = dot.length - 1 }
+
+            for (i = 0; i < dot.length; i++) {
+                if (i == n) {
+                    img[i].style.display = "block";
+                    dot[i].className = "selected";
+                    txt[i].style.display = "block";
+                }
+                else {
+                    img[i].style.display = "none";
+                    dot[i].classList.remove("selected");
+                    txt[i].style.display = "none";
+                }
+            }
+        }
+
+        function toggleSection(element)
+        {
+            if (element.children[2].style.display == "none")
+            {
+                element.children[0].style.display = "none";
+                element.children[1].style.display = "block";
+                element.children[2].style.display = "block";
+            }
+            else
+            {
+                element.children[0].style.display = "block";
+                element.children[1].style.display = "none";
+                element.children[2].style.display = "none";
+            }
+        }
+
+        function enableSection(name)
+        {
+            var element = document.getElementById(name).parentElement.parentElement;
+
+            element.children[0].style.display = "none";
+            element.children[1].style.display = "block";
+            element.children[2].style.display = "block";
+
+            playHighlight(name);
+        }
+
+        function sectionContent(e)
+        {
+            e.stopPropagation()
+        }
+
+        function playHighlight(name)
+        {
+            var element = document.getElementById(name + '-highlight');
+            element.style.animation = "highlightFade 5s";
+
+            setTimeout(function () {
+                element.style.animation = "none";
+            }, 4000);
+        }
+    </script>
+
+    <main>
+
+        <section class="content">
+            <div class="contentPad"></div>
+            <img class="logo" src="../media/games/combat/combat_logo.png">
+
+            <h2>Overview</h2>
+            <p>
+                Olympus Quest is an Action RPG inspired combat system. I created this project to practice creating VFX and feedback for player actions. This gave me an oportunity to develop new skills in creating shaders, animations, and code for a combat system. I also developed a new camera controller that follows the player dynamically, detects colision, and x-rays the player when they are behind an object.
+            </p>
+            <div class="contentPad"></div>
+            <p>
+                This project is curently under development.
+            </p>
+            <div class="contentPad"></div>
+            <p>Download Latest Build: <a href="../downloads/OlympicQuest.zip" target="_blank">Olympic Quest</a></p>
+            <div class="contentPad"></div>
+        </section>
+
+</main>
+
+</body>
+
+</html>

@@ -3,158 +3,215 @@
 
 <head>
 
-<meta charset="utf-8">
-<title>Luke Williamson - Designer</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../style.css">
+    <meta charset="utf-8">
+    <title>Basil and the Isles of Spice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
 
 </head>
+<body onload="load();">
+    <header>
 
-<body>
-<header>
+        <div class="navbar">
+            <div id="name-bar">
+                <a href="../">
+                    <ul>
+                        <li id="name-tag">Luke Williamson</li>
+                        <li id="designer-tag"><i>Designer</i></li>
+                    </ul>
+                </a>
+            </div>
 
-    <div class="navbar">
-        <div id="name-bar">
-            <a href="../">
-                <ul>
-                    <li id="name-tag">Luke Williamson</li>
-                    <li id="designer-tag"><i>Designer</i></li>
+            <nav>
+                <ul id="buttons-bar">
+                    <li id="hamburger">
+                        <img id="hamOpen" onclick="myFunction()" src="../media/generic/hamburger.png">
+                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="../media/generic/hamburgerClose.png">
+
+                        <div id="mobileNav" style="display: none;">
+                            <ul class="head-dropdown">
+                                <li><a class="head-button" href="../">Home</a></li>
+                                <li><a class="head-button" href="../projects">Projects</a></li>
+                                <li><a class="head-button" href="../contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="no-mobile"><a class="head-button" href="../">Home</a></li>
+                    <li class="no-mobile"><a class="head-button" href="../projects">Projects</a></li>
+                    <li class="no-mobile"><a class="head-button" href="../contact">Contact</a></li>
                 </ul>
-            </a>
+            </nav>
         </div>
 
-        <nav>
-            <ul id="buttons-bar">
-                <li><a class="head-button" href="../">Home</a></li>
-                <li>
-                    <a class="head-button" href="../levels">Levels</a>
+    </header>
 
-                    <ul class="head-dropdown">
-                        <li><a class="head-button" href="basil.html">Basil and the Isles of Spice</a></li>
-                        <li><a class="head-button" href="spirit.html">Split Spirit</a></li>
-                        <li><a class="head-button" href="robovania.html">Robovania</a></li>
-                        <li><a class="head-button" href="deep.html">Dangers of the Deep</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="head-button" href="../ux">UX</a>
+    <script>
 
-                    <ul class="head-dropdown">
-                        <li><a class="head-button" href="basil.html">Basil and the Isles of Spice</a></li>
-                        <li><a class="head-button" href="spirit.html">Split Spirit</a></li>
-                        <li><a class="head-button" href="time.html">Time Keeper</a></li>
-                    </ul>
-                </li>
-                <li><a class="head-button" href="../contact">Contact</a></li>
-            </ul>
-        </nav>
-        
-    </div>
+        function myFunction() {
+            var x = document.getElementById("mobileNav");
+            var y = document.getElementById("hamOpen");
+            var z = document.getElementById("hamClose");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+                z.style.display = "block";
+            } else {
+                x.style.display = "none";
+                y.style.display = "block";
+                z.style.display = "none";
+            }
+        }
 
-</header>
 
-        <main class="page">
+        function load() {
+            nextDiv(0, 'region1');
+            nextDiv(0, 'region2');
+        }
 
-            <!--        SIDEBAR          -->
-            <div class="sidebar">
-                <p>
-                    Basil and the Isles of Spice
-                </p>
+        function nextDiv(d, s) {
+            var i;
+            var dots = document.getElementById(s).getElementsByClassName("multicontentdots")[0].children;
 
-                <ul class="worktable">
-                    <a href="#level"><li class="worktableheader"><i class="arrow right"></i>Level Design</li></a>
-                    <a href="#level-first"><li><i class="arrow right"></i>Tutorial</li></a>
-                </ul>
+            for (i = 0; 1 < dots.length; i++) {
+                if (dots[i].className == "selected") {
+                    showDivs(i + d, s);
+                    return;
+                }
+            }
+        }
 
-                <ul class="worktable">
-                    <a href="#ux"><li class="worktableheader"><i class="arrow right"></i>UX Design</li></a>
-                    <a href="#fifth"><li><i class="arrow right"></i>Particles</li></a>
-                    <a href="#sixth"><li><i class="arrow right"></i>Feedback</li></a>
-                    <a href="#seventh"><li><i class="arrow right"></i>UI</li></a>
-                    <a href="#eighth"><li><i class="arrow right"></i>Engaging experience</li></a>
-                </ul>
+        function showDivs(n, s) {
+            var i;
+
+            var region = document.getElementById(s);
+
+            var img = region.getElementsByClassName("multicontentimages")[0].children;
+            var dot = region.getElementsByClassName("multicontentdots")[0].children;
+            var txt = region.getElementsByClassName("multicontenttexts")[0].children;
+
+            if (n >= dot.length) { n = 0 }
+            if (n < 0) { n = dot.length - 1 }
+
+            for (i = 0; i < dot.length; i++) {
+                if (i == n) {
+                    img[i].style.display = "block";
+                    dot[i].className = "selected";
+                    txt[i].style.display = "block";
+                }
+                else {
+                    img[i].style.display = "none";
+                    dot[i].classList.remove("selected");
+                    txt[i].style.display = "none";
+                }
+            }
+        }
+
+        function toggleSection(element) {
+            if (element.children[2].style.display == "none") {
+                element.children[0].style.display = "none";
+                element.children[1].style.display = "block";
+                element.children[2].style.display = "block";
+            }
+            else {
+                element.children[0].style.display = "block";
+                element.children[1].style.display = "none";
+                element.children[2].style.display = "none";
+            }
+        }
+
+        function enableSection(name) {
+            var element = document.getElementById(name).parentElement.parentElement;
+
+            element.children[0].style.display = "none";
+            element.children[1].style.display = "block";
+            element.children[2].style.display = "block";
+
+            playHighlight(name);
+        }
+
+        function sectionContent(e) {
+            e.stopPropagation()
+        }
+
+        function playHighlight(name) {
+            var element = document.getElementById(name + '-highlight');
+            element.style.animation = "highlightFade 5s";
+
+            setTimeout(function () {
+                element.style.animation = "none";
+            }, 4000);
+        }
+    </script>
+
+    <main>
+
+        <section class="content">
+            <div class="contentPad"></div>
+            <img class="logo" src="../media/games/basil/basil_logo_content.png">
+
+            <h2>Overview</h2>
+            <img id="gameheadercharacter" class="right" src="../media/games/basil/newbasil.png">
+            <p>
+                Basil and the Isles of Spice is an open world 3D platformer. Our 19 person team created a world where the player can explore various islands to collect crystals. Play as Basil, the water-running lizard, and explore four uniquely themed islands. Can you reach the top of the caldera to complete your training?
+            </p>
+            <div class="contentPad"></div>
+            <p>Download: <a href="../downloads/Basil.zip" target="_blank">Basil and the Isles of Spice</a></p>
+            <div class="contentPad"></div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="infoSectionHeader" onclick="toggleSection(this)">
+                Level Design Overview
+                <img class="expandCollapseButton" src="../media/generic/expand.png">
+                <img class="expandCollapseButton" src="../media/generic/collapse.png">
+                <section class="infoSection" style="display: none;" onclick="sectionContent(event)">
+                    <h2>Overview</h2>
+                    <p>
+                        When we came up with the idea for Basil and the Isles of Spice, we wanted a series of nine linear islands. Every three islands would be focused on one of our core mechanics: water running, climbing, and gliding. The player would collect crystals across these islands, which would be required to open gates between each group of islands.
+                    </p>
+                    <img class="slider-background" src="../media/games/basil/proto_map_01.jpg" style="width: 40%">
+
+                    <div class="contentPad"></div>
+                    <h2>Each Island</h2>
+                    <p>
+                        Each water running island would have three crystals, and the gate to the climbing islands would require seven crystals to unlock. This way, the player could take on challenges that interested them and skip ones that were too difficult.
+                    </p>
+                    <img class="slider-background" src="../media/games/basil/proto_map_02.jpg" style="width: 70%">
+                    <p>
+                        Over time, we simplified this to one island per ability, and eventually ended up cutting the climb entirely. In the end, there were three islands which could be visited in any order before unlocking the fourth and final island.
+                    </p>
+                    <img class="slider-background" src="../media/games/basil/proto_map_03.jpg" style="width: 40%">
+                    <img class="slider-background" src="../media/games/basil/proto_map_04.jpg" style="width: 60%">
+
+                    <button class="infoSectionCloseButton" onclick="toggleSection(this.parentElement.parentElement)">CLOSE</button>
+                </section>
             </div>
 
-            <!--     HEADER SECTION       -->
-            <div class="gameinfo" id="topgameinfo">
-                <img class="backgroundimage" src="../media/games/basil/basil_home_bg.jpg">
-
-                <img class="gamelogo" src = "../media/games/basil/basil_logo.png">
-
-                <div id="basildetails">
-                    <img id="basilheadertextbox" src ="../media/games/basil/basil_textbox.png">
-
-                    <p id="basiloverview">
-                        <b>PROJECT OVERVIEW</b>
-                        <br>- Student Project (DigiPen)
-                        <br>- 19 person team
-                        <br>- Made in Unity
-                        <br>- Completed 04.22.2023
+            <div class="infoSectionHeader" onclick="toggleSection(this)">
+                Level Design - Tutorial
+                <img class="expandCollapseButton" src="../media/generic/expand.png">
+                <img class="expandCollapseButton" src="../media/generic/collapse.png">
+                <section class="infoSection" style="display: none;" onclick="sectionContent(event)">
+                    <h2>Overview</h2>
+                    <p>
+                        The tutorial changed a lot over time. In the first iteration, the player would have to unlock the water run ability. The player traveled through the village, using basic movement and jumping, until they reached a pool of water. This was unpassable without the water run ability, which required the player to learn how to use it to progress. After this, the player would use the water run ability in a couple more pools of water before reaching the beach. They would then use the water running ability on the open sea for the first time.
                     </p>
 
-                    <img id="basilheaderbasil" src ="../media/games/basil/basil_home_basil.png">
-                </div>
-
-            </div>
-
-            <!--     BETWEEN SECTION       -->
-            <div class="betweendecor" style="background-image: url('../media/games/basil/basil_between_01.jpg');">
-            </div>
-
-            <!--     LEVEL SECTION       -->
-            <div id="level" class="gameinfo">
-                <img class="backgroundimage" src="../media/games/basil/basil_bg_03.jpg">
-
-                <h2>Level Design - Overview</h2>
-
-                <div class="gameinfogroup">
-                    <p class="left">
-                        When we came up with the idea for Basil and the Isles of Spice, we wanted a series of nine linear islands. Every three islands would be focused on one of our core mechanics: water running, climbing, and gliding. The player would collect crystals across these islands, which would be required to open gates between each group of islands. 
+                    <div class="contentPad"></div>
+                    <h2>Iterations</h2>
+                    <p>
+                        The next iteration of the tutorial was much more linear. The player no longer had to unlock the water run, so it is introduced much earlier. This version still had several flaws, however. It was too claustrophobic, with right walls blocking out the main path rather than allowing exploration, which was one of our main target audiences. Additionally, the core mechanic, water running, was still introduced later than we wanted.
                     </p>
-                    <img class="right" src="../media/games/basil/proto_map_01.jpg">
-                </div>
 
-                <div class="gameinfogroup">
-                    <img class="left" src="../media/games/basil/proto_map_02.jpg">
-                    <p class="right">
-                    Each water running island would have three crystals, and the gate to the climbing islands would require seven crystals to unlock. This way, the player could take on challenges that interested them and skip ones that were too difficult.
-                    </p>
-                </div>
-
-                <p>
-                    Over time, we simplified this to one island per ability, and eventually ended up cutting the climb entirely. In the end, there were three islands which could be visited in any order before unlocking the fourth and final island.
-                </p>
-                
-                <div class="gameinfogroup">
-                    <img class="left" src="../media/games/basil/proto_map_03.jpg">
-                    <img class="right" src="../media/games/basil/proto_map_04.jpg">
-                </div>
+                    <button class="infoSectionCloseButton" onclick="toggleSection(this.parentElement.parentElement)">CLOSE</button>
+                </section>
             </div>
+        </section>
+    </main>
 
-            <!--     BETWEEN SECTION       -->
-            <div class="betweendecor" style="background-image: url('../media/games/basil/basil_between_02.jpg');">
-            </div>
-
-            <!--     FIRST SECTION       -->
-            <div id="level-first" class="gameinfo">
-                <img class="backgroundimage" src="../media/games/time/time_bg.jpg">
-
-                <h2>Level Design - Tutorial</h2>
-
-                <p>
-                    The tutorial changed a lot over time. In the first iteration, the player would have to unlock the water run ability. The player traveled through the village, using basic movement and jumping, until they reached a pool of water. This was unpassable without the water run ability, which required the player to learn how to use it to progress. After this, the player would use the water run ability in a couple more pools of water before reaching the beach. They would then use the water running ability on the open sea for the first time. 
-                </p>
-
-                <p>
-                    The next iteration of the tutorial was much more linear. The player no longer had to unlock the water run, so it is introduced much earlier. This version still had several flaws, however. It was too claustrophobic, with right walls blocking out the main path rather than allowing exploration, which was one of our main target audiences. Additionally, the core mechanic, water running, was still introduced later than we wanted.
-                </p>
-            </div>
-
-            <!--     BETWEEN SECTION       -->
-            <div class="betweendecor" style="background-image: url('../media/games/basil/basil_between_03.jpg');">
-            </div>
-        </main>
-        
-    </body>
+</body>
 
 </html>

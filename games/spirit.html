@@ -4,266 +4,168 @@
 <head>
 
 <meta charset="utf-8">
-<title>Luke Williamson - Designer</title>
+<title>Split Spirit</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../style.css">
 
 </head>
-
 <body onload="load();">
-<header>
+    <header>
 
-    <div class="navbar">
-        <div id="name-bar">
-            <a href="../">
-                <ul>
-                    <li id="name-tag">Luke Williamson</li>
-                    <li id="designer-tag"><i>Designer</i></li>
+        <div class="navbar">
+            <div id="name-bar">
+                <a href="../">
+                    <ul>
+                        <li id="name-tag">Luke Williamson</li>
+                        <li id="designer-tag"><i>Designer</i></li>
+                    </ul>
+                </a>
+            </div>
+
+            <nav>
+                <ul id="buttons-bar">
+                    <li id="hamburger">
+                        <img id="hamOpen" onclick="myFunction()" src="../media/generic/hamburger.png">
+                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="../media/generic/hamburgerClose.png">
+
+                        <div id="mobileNav" style="display: none;">
+                            <ul class="head-dropdown">
+                                <li><a class="head-button" href="../">Home</a></li>
+                                <li><a class="head-button" href="../projects">Projects</a></li>
+                                <li><a class="head-button" href="../contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="no-mobile"><a class="head-button" href="../">Home</a></li>
+                    <li class="no-mobile"><a class="head-button" href="../projects">Projects</a></li>
+                    <li class="no-mobile"><a class="head-button" href="../contact">Contact</a></li>
                 </ul>
-            </a>
+            </nav>
         </div>
 
-        <nav>
-            <ul id="buttons-bar">
-                <li><a class="head-button" href="../">Home</a></li>
-                <li>
-                    <a class="head-button" href="../levels">Levels</a>
+    </header>
 
-                    <ul class="head-dropdown">
-                        <li><a class="head-button" href="basil.html">Basil and the Isles of Spice</a></li>
-                        <li><a class="head-button" href="spirit.html">Split Spirit</a></li>
-                        <li><a class="head-button" href="robovania.html">Robovania</a></li>
-                        <li><a class="head-button" href="deep.html">Dangers of the Deep</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="head-button" href="../ux">UX</a>
+    <script>
 
-                    <ul class="head-dropdown">
-                        <li><a class="head-button" href="basil.html">Basil and the Isles of Spice</a></li>
-                        <li><a class="head-button" href="spirit.html">Split Spirit</a></li>
-                        <li><a class="head-button" href="time.html">Time Keeper</a></li>
-                    </ul>
-                </li>
-                <li><a class="head-button" href="../contact">Contact</a></li>
-            </ul>
-        </nav>
-        
-    </div>
+        function myFunction() {
+            var x = document.getElementById("mobileNav");
+            var y = document.getElementById("hamOpen");
+            var z = document.getElementById("hamClose");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+                y.style.display = "none";
+                z.style.display = "block";
+            } else {
+                x.style.display = "none";
+                y.style.display = "block";
+                z.style.display = "none";
+            }
+        }
 
-</header>
 
-            <script>
+        function load() {
+            nextDiv(0, 'region1');
+            nextDiv(0, 'region2');
+        }
 
-                function load()
-                {
-                    nextDiv(0, 'region1');
-                    nextDiv(0, 'region2');
+        function nextDiv(d, s) {
+            var i;
+            var dots = document.getElementById(s).getElementsByClassName("multicontentdots")[0].children;
+
+            for (i = 0; 1 < dots.length; i++) {
+                if (dots[i].className == "selected") {
+                    showDivs(i + d, s);
+                    return;
                 }
+            }
+        }
 
-                function nextDiv(d, s)
-                {
-                    var i;
-                    var dots = document.getElementById(s).getElementsByClassName("multicontentdots")[0].children;
+        function showDivs(n, s) {
+            var i;
 
-                    for(i = 0; 1 < dots.length; i++)
-                    {
-                        if(dots[i].className == "selected")
-                        {
-                            showDivs(i + d, s);
-                            return;
-                        }
-                    }
+            var region = document.getElementById(s);
+
+            var img = region.getElementsByClassName("multicontentimages")[0].children;
+            var dot = region.getElementsByClassName("multicontentdots")[0].children;
+            var txt = region.getElementsByClassName("multicontenttexts")[0].children;
+
+            if (n >= dot.length) { n = 0 }
+            if (n < 0) { n = dot.length - 1 }
+
+            for (i = 0; i < dot.length; i++) {
+                if (i == n) {
+                    img[i].style.display = "block";
+                    dot[i].className = "selected";
+                    txt[i].style.display = "block";
                 }
-
-                function showDivs(n, s)
-                {
-                    var i;
-
-                    var region = document.getElementById(s);
-
-                    var img = region.getElementsByClassName("multicontentimages")[0].children;
-                    var dot = region.getElementsByClassName("multicontentdots")[0].children;
-                    var txt = region.getElementsByClassName("multicontenttexts")[0].children;
-
-                    if (n >= dot.length) {n = 0}
-                    if (n < 0) {n = dot.length - 1}
-
-                    for (i = 0; i < dot.length; i++) 
-                    {
-                        if(i == n)
-                        { 
-                            img[i].style.display = "block";
-                            dot[i].className = "selected";
-                            txt[i].style.display = "block";
-                        }
-                        else
-                        {
-                            img[i].style.display = "none";
-                            dot[i].classList.remove("selected");
-                            txt[i].style.display = "none";
-                        }
-                    }
+                else {
+                    img[i].style.display = "none";
+                    dot[i].classList.remove("selected");
+                    txt[i].style.display = "none";
                 }
-            </script>
+            }
+        }
 
-        <main>
+        function toggleSection(element) {
+            if (element.children[2].style.display == "none") {
+                element.children[0].style.display = "none";
+                element.children[1].style.display = "block";
+                element.children[2].style.display = "block";
+            }
+            else {
+                element.children[0].style.display = "block";
+                element.children[1].style.display = "none";
+                element.children[2].style.display = "none";
+            }
+        }
 
-<section>
-            <h2>Split Spirit</h2>
+        function enableSection(name) {
+            var element = document.getElementById(name).parentElement.parentElement;
+
+            element.children[0].style.display = "none";
+            element.children[1].style.display = "block";
+            element.children[2].style.display = "block";
+
+            playHighlight(name);
+        }
+
+        function sectionContent(e) {
+            e.stopPropagation()
+        }
+
+        function playHighlight(name) {
+            var element = document.getElementById(name + '-highlight');
+            element.style.animation = "highlightFade 5s";
+
+            setTimeout(function () {
+                element.style.animation = "none";
+            }, 4000);
+        }
+    </script>
+
+    <main>
+
+        <section class="content">
+            <div class="contentPad"></div>
+            <img class="logo" src="../media/games/spirit/spirit_logo_content.png">
+
+            <h2>Overview</h2>
+            <img id="gameheadercharacter" class="right" src="../media/games/spirit/deer.png">
             <p>
-                This page is under construction.
+                Split Spirit is a 2D puzzle platformer built in a custom engine. Play as a ball of light that can attatch to creatures to gain control over them. Solve puzzles and overcome environmental challenges to reach the top of the mountain. I worked as both a level and UX designer on this project, creating stages that utilize the environment to immerse the player and create challenges.
             </p>
+            <div class="contentPad"></div>
+            <p>Download: <a href="../downloads/SplitSpirit.zip" target="_blank">Split Spirit</a></p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="contentPad"></div><br />
+        </section>
 
-            <a href="../"> 
-                <div class="button">Return to Home</div>
-            </a>
-            
+    </main>
 
-            <div class="multicontent" id="region1">
-
-                <div onclick="nextDiv(-1, 'region1')" class="leftarrow"></div>
-                <div onclick="nextDiv(1, 'region1')" class="rightarrow"></div>
-            
-                <!-- Images -->
-                <ul class="multicontentimages">
-                <li><img src="../media/games/basil/proto_map_01.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_02.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_03.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_04.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_05.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_06.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_07.jpg"></li>
-                </ul>
-
-                <!-- Dots -->
-                <ul class="multicontentdots">
-                <li onclick="showDivs(0, 'region1')" class="selected"></li>
-                <li onclick="showDivs(1, 'region1')"></li>
-                <li onclick="showDivs(2, 'region1')"></li>
-                <li onclick="showDivs(3, 'region1')"></li>
-                <li onclick="showDivs(4, 'region1')"></li>
-                <li onclick="showDivs(5, 'region1')"></li>
-                <li onclick="showDivs(6, 'region1')"></li>
-                </ul>
-
-                <!-- Texts -->
-                <ul class="multicontenttexts">
-                <li><p>1Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>2Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>3Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>4Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>5Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>6Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>7Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                </ul>
-
-            </div>
-
-            <div class="multicontent" id="region2">
-
-                <div onclick="nextDiv(-1, 'region2')" class="leftarrow"></div>
-                <div onclick="nextDiv(1, 'region2')" class="rightarrow"></div>
-            
-                <!-- Images -->
-                <ul class="multicontentimages">
-                <li><img src="../media/games/basil/proto_map_01.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_02.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_03.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_04.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_05.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_06.jpg"></li>
-                <li><img src="../media/games/basil/proto_map_07.jpg"></li>
-                </ul>
-
-                <!-- Dots -->
-                <ul class="multicontentdots">
-                <li onclick="showDivs(0, 'region2')" class="selected"></li>
-                <li onclick="showDivs(1, 'region2')"></li>
-                <li onclick="showDivs(2, 'region2')"></li>
-                <li onclick="showDivs(3, 'region2')"></li>
-                <li onclick="showDivs(4, 'region2')"></li>
-                <li onclick="showDivs(5, 'region2')"></li>
-                <li onclick="showDivs(6, 'region2')"></li>
-                </ul>
-
-                <!-- Texts -->
-                <ul class="multicontenttexts">
-                <li><p>1Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>2Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>3Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>4Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>5Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>6Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                <li><p>7Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p></li>
-                </ul>
-
-            </div>
-
-
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            
-            <p>
-                <a href="../levels">Click here to see my levels</a>
-            </p>
-            </section>
-
-        </main>
-        
-    </body>
+</body>
 
 </html>

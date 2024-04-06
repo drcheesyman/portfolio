@@ -860,12 +860,10 @@ h2
     width: 55%;
 }
 
-#basilheaderbasil
+#gameheadercharacter
 {
-    width: 18%;
-    position: absolute;
-    right: 420px;
-    top: -70px;
+    width: 300px;
+    margin: -70px 0 10px;
 }
 
 .gameinfogroup
@@ -875,6 +873,13 @@ h2
     gap: 2.5rem;
 
     margin: 80px 0;
+}
+
+.content img.right
+{
+    padding: 0;
+    float: right;
+    width: 30%;
 }
 
 .gameinfo p
@@ -1320,6 +1325,12 @@ h2
     .content img
     {
         width: 90% !important;
+    }
+
+    #gameheadercharacter
+    {
+        width: 150px !important;
+        margin: 0;
     }
 
     .infoSectionHeader .expandCollapseButton

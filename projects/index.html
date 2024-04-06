@@ -4,181 +4,200 @@
 <head>
 
 <meta charset="utf-8">
-<title>Luke Williamson - Designer</title>
+<title>Luke Williamson - Projects</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="../style.css">
 
 </head>
 
 <body>
-<header>
+    <header>
 
-    <div class="navbar">
-        <div id="name-bar">
-            <a href="../../portfolio">
-                <ul>
-                    <li id="name-tag">Luke Williamson</li>
-                    <li id="designer-tag"><i>Designer</i></li>
+        <div class="navbar">
+            <div id="name-bar">
+                <a href="../">
+                    <ul>
+                        <li id="name-tag">Luke Williamson</li>
+                        <li id="designer-tag"><i>Designer</i></li>
+                    </ul>
+                </a>
+            </div>
+
+            <nav>
+                <ul id="buttons-bar">
+                    <li id="hamburger">
+                        <img id="hamOpen" onclick="myFunction()" src="../media/generic/hamburger.png">
+                        <img id="hamClose" style="display: none;" onclick="myFunction()" src="../media/generic/hamburgerClose.png">
+
+                        <div id="mobileNav" style="display: none;">
+                            <ul class="head-dropdown">
+                                <li><a class="head-button" href="../">Home</a></li>
+                                <li><a class="head-button" href="../projects">Projects</a></li>
+                                <li><a class="head-button" href="../contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="no-mobile"><a class="head-button" href="../">Home</a></li>
+                    <li class="no-mobile"><a class="head-button" href="../projects">Projects</a></li>
+                    <li class="no-mobile"><a class="head-button" href="../contact">Contact</a></li>
                 </ul>
-            </a>
+            </nav>
         </div>
 
-        <nav>
-            <ul id="buttons-bar">
-                <li><a class="head-button" href="../../portfolio">Home</a></li>
-                <li>
-                    <a class="head-button" href="../projects">Projects</a>
+    </header>
 
-                    <!--<ul class="head-dropdown">
-                        <li><a class="head-button" href="basil.html">Basil and the Isles of Spice</a></li>
-                        <li><a class="head-button" href="spirit.html">Split Spirit</a></li>
-                        <li><a class="head-button" href="robovania.html">Robovania</a></li>
-                        <li><a class="head-button" href="deep.html">Dangers of the Deep</a></li>
-                    </ul>-->
-                </li>
-                <!--<li>
-                    <a class="head-button" href="../ux">UX</a>
+<main>
+    <div class="header-slides">
+        <a href="../games/platform.html">
+            <div class="slider-item" style="background-color: #281e14">
 
-                    <ul class="head-dropdown">
-                        <li><a class="head-button" href="basil.html">Basil and the Isles of Spice</a></li>
-                        <li><a class="head-button" href="spirit.html">Split Spirit</a></li>
-                        <li><a class="head-button" href="time.html">Time Keeper</a></li>
-                    </ul>
-                </li>-->
-                <li><a class="head-button" href="../contact">Contact</a></li>
-            </ul>
-        </nav>
-        
+                <img class="slider-background" src="../media/games/platform/platform_bg.jpg">
+
+                <div class="slider-flex">
+                    <div class="slider-text">
+                        <img src="../media/games/platform/platform_logo.png">
+                        <h2>Building a 3D platformer from the ground up</h2>
+                        <!--<p>A solo project focused on Kishotenketsu level design and technical implementation. Everything was built from the ground up for this project. Made in Unity in 14 weeks.</p>-->
+                        <ul>
+                            <li>Building levels as a full experience</li>
+                            <li>Planning for a tight deadline</li>
+                            <li>Developing skills in new fields</li>
+                        </ul>
+                        <section>
+                            <div class="button">Read More <i class="arrow right"></i></div>
+                        </section>
+                    </div>
+
+                    <div class="slider-video">
+                        <video poster="../media/games/platform/platform_trailer_poster.jpg" width="100%" autoplay loop muted playsinline style="pointer-events: none;">
+                            <source src="../media/games/platform/platform_trailer.mp4" type="video/mp4">
+                            <source src="../media/games/platform/platform_trailer.ogg" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <div class="mobileTimerIndicator" style="width: 0%;"></div>
     </div>
 
-</header>
+    <br />
 
-        <main>
+    <!-- -------- OLYMPUS -------- -->
+    <div class="header-slides">
+        <a href="../games/combat.html">
+            <div class="slider-item" style="background-color: #3b4950">
 
-<section>
-            <h2>This is the level design page.</h2>
-            <p>
-                What is level design?
-            </p>
+                <img class="slider-background" src="../media/games/combat/combat_bg.jpg">
 
-            <h2>Games I've worked on:</h2>
+                <div class="slider-flex">
+                    <div class="slider-text">
+                        <img src="../media/games/combat/combat_logo.png">
 
-            <section class="game">
-                <h3>Basil and the Isles of Spice</h3>
+                        <h2>Creating a polished combat system</h2>
+                        <ul>
+                            <li>Designing and implimenting VFX for combat</li>
+                            <li>Creating a robust third person camera</li>
+                        </ul>
+                        <section>
+                            <div class="button">Read More <i class="arrow right"></i></div>
+                        </section>
+                    </div>
 
-                <p>Brief summary of BATIOS.</p>
+                    <div class="slider-video">
+                        <video poster="../media/games/combat/combat_trailer_poster.jpg" width="100%" autoplay loop muted playsinline style="pointer-events: none;">
+                            <source src="../media/games/combat/combat_trailer.mp4" type="video/mp4">
+                            <source src="../media/games/combat/combat_trailer.ogg" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </a>
 
-                <a href="../games/basil.php"> 
-                    <section>
-                        <!--<p>I worked on the tutorial and final level.</p>-->
-                        <div class="button">Read More <i class="arrow right"></i></div>
-                    </section>
-                </a>
+        <div class="mobileTimerIndicator" style="width: 0%;"></div>
+    </div>
 
-            </section>
+    <br />
 
-            <section class="game">
-                <h3>Split Spirit</h3>
+    <!-- -------- BASIL -------- -->
+    <div class="header-slides">
+        <a href="../games/basil.html">
+            <div class="slider-item" style="background-color: #115ca6">
 
-                <p>Brief summary of Split Spirit.</p>
+                <img class="slider-background" src="../media/games/basil/basil_bg.jpg">
 
-                <a href="../games/spirit.php"> 
-                    <section>
-                        <!--<p>I worked on the tutorial and final level.</p>-->
-                        <div class="button">Read More <i class="arrow right"></i></div>
-                    </section>
-                </a>
-            </section>
+                <div class="slider-flex">
+                    <div class="slider-text">
+                        <img src="../media/games/basil/basil_logo.png">
 
-            <section class="game">
-                <h3>Robovania</h3>
+                        <h2>Designing for an open world</h2>
+                        <ul>
+                            <li>Creating challenges that can be played in any order</li>
+                            <li>Guiding the player so they never get lost</li>
+                            <li>Creating a subtle and immersive UI</li>
+                            <li>Working with a large team to showcase everyone's work</li>
+                        </ul>
+                        <section>
+                            <div class="button">Read More <i class="arrow right"></i></div>
+                        </section>
+                    </div>
 
-                <p>Brief summary of Robovania.</p>
+                    <div class="slider-video">
+                        <video poster="../media/games/basil/basil_trailer_poster.jpg" width="100%" autoplay loop muted playsinline style="pointer-events: none;">
+                            <source src="../media/games/basil/basil_trailer.mp4" type="video/mp4">
+                            <source src="../media/games/basil/basil_trailer.ogg" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </a>
 
-                <a href="../games/robovania.php"> 
-                    <section>
-                        <!--<p>I worked on the tutorial and final level.</p>-->
-                        <div class="button">Read More <i class="arrow right"></i></div>
-                    </section>
-                </a>
-            </section>
+        <div class="mobileTimerIndicator" style="width: 0%;"></div>
+    </div>
 
-            <section class="game">
-                <h3>Dangers of the Deep</h3>
+    <br />
 
-                <p>Brief summary of DOTD.</p>
+    <!-- -------- SPLIT SPIRIT -------- -->
+    <div class="header-slides">
+        <a href="../games/spirit.html">
+            <div class="slider-item" style="background-color: #876b56">
 
-                <a href="../games/deep.php"> 
-                    <section>
-                        <!--<p>I worked on the tutorial and final level.</p>-->
-                        <div class="button">Read More <i class="arrow right"></i></div>
-                    </section>
-                </a>
-            </section>
+                <img class="slider-background" src="../media/games/spirit/spirit_bg.jpg">
 
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            
-            <p>
-                <a href="../levels">Click here to see my levels</a>
-            </p>
-            </section>
+                <div class="slider-flex">
+                    <div class="slider-text">
+                        <img src="../media/games/spirit/spirit_logo.png">
 
-        </main>
+                        <h2>Building level in a custom game engine</h2>
+                        <ul>
+                            <li>Creating levels in JSON files</li>
+                            <li>Maintaining challenge in a game without hazards</li>
+                            <li>Creating immersion within a limited system</li>
+                        </ul>
+
+                        <section>
+                            <div class="button">Read More <i class="arrow right"></i></div>
+                        </section>
+                    </div>
+
+                    <div class="slider-video">
+                        <video poster="../media/games/spirit/spirit_trailer_poster.jpg" width="100%" autoplay loop muted playsinline style="pointer-events: none;">
+                            <source src="../media/games/spirit/spirit_trailer.mp4" type="video/mp4">
+                            <source src="../media/games/spirit/spirit_trailer.ogg" type="video/ogg">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <div class="mobileTimerIndicator" style="width: 0%;"></div>
+    </div>
+
+</main>
         
     </body>
 
